@@ -23,11 +23,17 @@ def process_organizations_csv():
 
     with open(csv_file, 'r') as file:
         csv_reader = csv.DictReader(file)
-        for row in csv_reader:
+
+        for i, row in enumerate(csv_reader):
             github_org = row['github_org']
-            print(f"Processing main script for organization: {github_org}")
-            # run_trufflehog(github_org, pat)
-            run_main_script(github_org, pat)
+
+            if i == 1:
+                run_main_script(github_org, pat)
+        # for row in csv_reader:
+        #     github_org = row['github_org']
+        #     print(f"Processing main script for organization: {github_org}")
+        #     # run_trufflehog(github_org, pat)
+        #     run_main_script(github_org, pat)
 
 if __name__ == '__main__':
     process_organizations_csv()

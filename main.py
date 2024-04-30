@@ -16,14 +16,31 @@ Output:
 Summary:
     For a given workflow dictionary (name, content) this
     function will call content_analyzer to audit the workflow
-    for any potential vulnerabilities. 
+    for any potential vulnerabilities.
 """
-def repo_analysis(repo_workflow):
-    for workflow in repo_workflow:
+# def repo_analysis(repo_url, repo_workflows):
+#     for workflow in repo_workflows:
+#         workflow_name = workflow['name']
+#         workflow_content = workflow['content']
+#         AuditLogger.info(f">> Scanning: {workflow_name}")
+#         content_analyzer(content=workflow_content) # will print out security issues
+def repo_analysis(repo_workflows, repo_path):
+    repo_vulnerabilities = []
+
+    for workflow in repo_workflows:
         workflow_name = workflow['name']
         workflow_content = workflow['content']
         AuditLogger.info(f">> Scanning: {workflow_name}")
-        content_analyzer(content=workflow_content) # will print out security issues
+        num_secrets, vulnerabilities = content_analyzer(content=workflow_content)
+
+        repo_vulnerabilities.append({
+            "workflow_name": workflow_name,
+            "workflow_url": f"https://github.com/{repo_path}/blob/master/.github/workflows/{workflow_name}",
+            "workflow_vulnerabilities": vulnerabilities,
+            "num_secrets": num_secrets
+        })
+
+    return repo_vulnerabilities
 
 def main():
     # Supporting user provided arguments: type, and scan target.
@@ -32,12 +49,12 @@ def main():
                         help='Type of entity that is being scanned.')
     parser.add_argument('input',help='Org, user or repo name (owner/name)')
     args = parser.parse_args()
-    
+
     gh = GHWrapper()
-    
+
     target_type = args.type #repo, org, or user
     target_input = args.input #can be repo url, or a username for org/user
-    
+
     if target_type == 'repo':
         repos = gh.get_single_repo(repo_name=target_input)
     else:
@@ -45,10 +62,32 @@ def main():
                                     target_type=target_type)
         AuditLogger.info(f"Metric: Scanning total {count} repos")
 
-    for repo_dict in repos:
-        AuditLogger.info(f"> Starting audit of {repo_dict}")
-        repo_workflows = repos[repo_dict]
-        repo_analysis(repo_workflows)
+    entity_data = {
+        "entity_name": target_input,
+        "entity_url": f"https://github.com/{target_input}",
+        "repo_data": []
+    }
+
+    for repo_path, repo_workflows in repos.items():
+        AuditLogger.info(f"> Starting audit of {repo_path}")
+        repo_vulnerabilities = repo_analysis(repo_workflows, repo_path)
+        entity_data['repo_data'].append({
+            "repo_path": repo_path,
+            "repo_url": f"https://github.com/{repo_path}",
+            "repo_vulnerabilities": repo_vulnerabilities
+        })
+
+        # org_data = {
+        #     "organization": target_input,
+        #     "organization_url": f"https://github.com/{target_input}",
+        #     "repos": repo_vulnerabilities
+        # }
+        # print(org_data)
+
+    # for repo_dict in repos:
+    #     AuditLogger.info(f"> Starting audit of {repo_dict}")
+    #     repo_workflows = repos[repo_dict]
+    #     repo_analysis(repo_workflows)
 
     AuditLogger.info(f"> Checking for supply chain attacks.")
     action_audit()
