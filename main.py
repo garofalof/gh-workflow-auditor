@@ -1,4 +1,6 @@
 import argparse
+import os
+import json
 
 # Local imports
 from auditor import content_analyzer
@@ -31,16 +33,28 @@ def repo_analysis(repo_workflows, repo_path):
         workflow_name = workflow['name']
         workflow_content = workflow['content']
         AuditLogger.info(f">> Scanning: {workflow_name}")
-        num_secrets, vulnerabilities = content_analyzer(content=workflow_content)
+        secrets_used, vulnerabilities = content_analyzer(content=workflow_content)
 
         repo_vulnerabilities.append({
             "workflow_name": workflow_name,
             "workflow_url": f"https://github.com/{repo_path}/blob/master/.github/workflows/{workflow_name}",
             "workflow_vulnerabilities": vulnerabilities,
-            "num_secrets": num_secrets
+            "num_secrets": secrets_used
         })
 
     return repo_vulnerabilities
+
+def write_to_json(entity_data):
+    output_file = 'output.json'
+    if os.path.exists(output_file):
+        with open(output_file, 'r') as f:
+            output_data = json.load(f)
+            output_data.append(entity_data)
+        with open(output_file, 'w') as f:
+            json.dump(output_data, f, indent=4)
+    else:
+        with open(output_file, 'w') as f:
+            json.dump([entity_data], f, indent=4)
 
 def main():
     # Supporting user provided arguments: type, and scan target.
@@ -90,6 +104,9 @@ def main():
     #     repo_analysis(repo_workflows)
 
     AuditLogger.info(f"> Checking for supply chain attacks.")
-    action_audit()
+    vulnerable_users = action_audit()
+    entity_data['vulnerable_users'] = vulnerable_users
+
+    write_to_json(entity_data)
 
 main()

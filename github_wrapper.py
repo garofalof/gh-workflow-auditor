@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 import requests
 from lib.logger import AuditLogger
 
@@ -34,17 +35,34 @@ class GHWrapper():
         return valid_status
 
     def call_graphql(self, query):
+        end_time = time.time()
         headers = {'Authorization':f"Bearer {self.token}",
                 'Content-Type':'application/json'}
         query_request = requests.post(url='https://api.github.com/graphql',
                                     json = {'query':query},
                                     headers = headers)
+
+        AuditLogger.info(f"Query request returned: {query_request}")
+        
+        # Check rate limit headers
+        remaining_points = int(query_request.headers.get('x-ratelimit-remaining', 0))
+        used_points = int(query_request.headers.get('x-ratelimit-used', 0))
+        rate_limit_reset_time = int(query_request.headers.get('x-ratelimit-reset', 0))
+
+        # Calculate time until rate limit reset (in seconds)
+        time_until_reset = max(rate_limit_reset_time - end_time, 0)
+
+        # Print or log rate limit information
+        AuditLogger.info(f"Remaining rate limit points: {remaining_points}")
+        AuditLogger.info(f"Used rate limit points: {used_points}")
+        AuditLogger.info(f"Rate limit will reset in {time_until_reset} seconds")
+
         if query_request.status_code == 200:
             return query_request.json()
         else:
             message = query_request.text
             AuditLogger.error(f"GitHub GraphQL Query failed: {message}")
-            sys.exit(1)
+            raise RuntimeError(f"GitHub GraphQL Query failed w/ error: {message}")
     
     def repo_node_parser(self,repo_node):
         workflow_object = repo_node['object']
@@ -79,33 +97,48 @@ class GHWrapper():
         AuditLogger.info(f"---- Getting repos for {target_name}----")
         repos_all = {}
         query_type = {'org':'organization','user':'user','repo':'repository'}
-        try:
-            next_cursor = None
-            has_more = True # for pagination loop
-            count = 0
-            while has_more:
-                query = return_query(query_type[target_type],
-                                target_name, next_cursor)
-                repos = self.call_graphql(query)
-                if repos.get('errors') is None:
-                    for repo in repos['data'][query_type[target_type]]['repositories']['edges']:
-                        repo_node = repo['node']
-                        repo_name = repo_node['nameWithOwner']
-                        repo_workflows = self.repo_node_parser(repo_node)
-                        if repo_workflows:
-                            repos_all[repo_name] = repo_workflows
-                            count += 1
-                        else:
-                            AuditLogger.debug(f"Repo {repo_name} has no workflow.")
-                    has_more = repos['data'][query_type[target_type]]['repositories']['pageInfo']['hasNextPage']
-                    next_cursor = repos['data'][query_type[target_type]]['repositories']['pageInfo']['endCursor']
-                    if has_more:
-                        AuditLogger.info("> Retrieve next batch of 100 repos.")
-                else:
-                    AuditLogger.error(f"GraphQL response had error.")
-                    sys.exit(1)
-        except Exception as repo_err:
-            AuditLogger.debug(f"Error parsing data. Message: {str(repo_err)}")
+        retry_count = 0
+        max_retries = 5
+        next_cursor = None
+        repo_batch_size = 100  # Initial batch size
+
+        while retry_count < max_retries: # Retry up to 5 times for the current batch
+            try:
+                has_more = True # for pagination loop
+                count = 0
+                while has_more:
+                    query = return_query(query_type[target_type],
+                                    target_name, next_cursor, repo_batch_size)
+                    repos = self.call_graphql(query)
+                    if repos.get('errors') is None:
+                        for repo in repos['data'][query_type[target_type]]['repositories']['edges']:
+                            repo_node = repo['node']
+                            repo_name = repo_node['nameWithOwner']
+                            repo_workflows = self.repo_node_parser(repo_node)
+                            if repo_workflows:
+                                repos_all[repo_name] = repo_workflows
+                                count += 1
+                            else:
+                                AuditLogger.debug(f"Repo {repo_name} has no workflow.")
+                        has_more = repos['data'][query_type[target_type]]['repositories']['pageInfo']['hasNextPage']
+                        next_cursor = repos['data'][query_type[target_type]]['repositories']['pageInfo']['endCursor']
+                        if has_more:
+                            AuditLogger.info(f"> Retrieve next batch of {repo_batch_size} repos.")
+                    else:
+                        AuditLogger.error("GraphQL response had error.")
+                        raise Exception("GraphQL query failed")
+                    
+                # If we reach here, all repositories have been fetched successfully
+                return count, repos_all
+            except Exception as e:
+                # Log the error and attempt again if it's not the last attempt
+                retry_count += 1
+                AuditLogger.error(f"Error fetching repositories: {str(e)}")
+                if retry_count < max_retries:
+                    repo_batch_size //= 2  # Reduce batch size by half
+                    AuditLogger.info(f"Retry attempt {retry_count} for the current batch with a batch size of {repo_batch_size}.")
+                    time.sleep(5)
+
         return count, repos_all
 
     def stale_checker(self,username):

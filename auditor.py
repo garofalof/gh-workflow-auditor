@@ -32,7 +32,7 @@ def content_analyzer(content):
     checked_action = []
     workflow_client = WorkflowParser(content)
     vulnerabilities = []
-    num_secrets = 0
+    secrets_used = []
 
     try:
         if workflow_client.parsed_content and not workflow_client.parsed_content.get('failed',None): # Sanity check to make sure proper YAML was given.
@@ -41,11 +41,10 @@ def content_analyzer(content):
             all_jobs = workflow_client.get_jobs() # Identify all jobs in the workflow. Stored as dictionary
 
             counter = 1 # Counter used to identify which line of code is vulnerable.
+            
             if secrets:
                 AuditLogger.info(f">>> Secrets used in workflow: {','.join(secrets)}")
-                num_secrets = len(secrets)
-            else:
-                num_secrets = 0
+                secrets_used.extend(secrets)
 
             # Retrieve and store all needed information for a workflow run for analysis.
             if all_jobs:
@@ -90,13 +89,13 @@ def content_analyzer(content):
                                                 risky_env = vuln_analyzer.risky_command(command_string=environ_var_value)
                                                 if risky_env and list(risky_env.keys())[0] != 'environ_regex':
                                                     vulnerabilities.append({
-                                                        "vulnerability_name": "ENV variable called through context w/ user input",
+                                                        "vulnerability_name": "Remote Code Execution via Environment Variable Injection in GitHub Context",
                                                         "vulnerability_info": f"RCE detected with {regex} in {step_number}: ENV variable {environ_variable} is called through GitHub context and takes user input {environ_var_value}"
                                                     })
                                                     AuditLogger.warning(f">>> Security Issue: RCE detected with {regex} in {step_number}: ENV variable {environ_variable} is called through GitHub context and takes user input {environ_var_value}")
                                     else:
                                         vulnerabilities.append({
-                                            "vulnerability_name": "ENV variable called through context w/ user input",
+                                            "vulnerability_name": f"Remote Code Execution via Unsanitized Input in Workflow Steps",
                                             "vulnerability_info": f"RCE detected with {regex} in {step_number}: Usage of {','.join(matched_strings)} found."
                                         })
                                         AuditLogger.warning(f">>> Security Issue: RCE detected with {regex} in {step_number}: Usage of {','.join(matched_strings)} found.")
@@ -116,7 +115,7 @@ def content_analyzer(content):
                                         if risky_commits:
                                             if 'pull_request_target' in risky_triggers:
                                                 vulnerabilities.append({
-                                                    "vulnerability_name": "Malicious pull request used in actions/checkout",
+                                                    "vulnerability_name": "Security Bypass via Malicious Pull Request in GitHub Actions Checkout Step",
                                                     "vulnerability_info": f"Malicious pull request used in actions/checkout. Vulnerable step: {step_number}"
                                                 })
                                                 AuditLogger.warning(f">>> Security Issue: Malicious pull request used in actions/checkout. Vulnerable step: {step_number} ")
@@ -126,4 +125,4 @@ def content_analyzer(content):
     except Exception as e:
         AuditLogger.info(f">>> Error in content_analyzer. Error is {str(e)}")
 
-    return num_secrets, vulnerabilities
+    return secrets_used, vulnerabilities
