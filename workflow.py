@@ -44,6 +44,9 @@ class WorkflowVulnAudit():
         # get scan config regex ready
         self.unsafe_input = {}
         self.malicious_commits = {}
+        self.cloud_commands = {}
+        self.kubernetes_patterns = {}
+
         with open('scan_config.json','r') as scan_file:
             scan_config = json.loads(scan_file.read())
             self.triggers = scan_config['risky_events']
@@ -52,8 +55,15 @@ class WorkflowVulnAudit():
             self.unsafe_input[risky_input] = re.compile(scan_config['rce_risks']['unsafe_inputs'][risky_input])
         for commit_to_watch in scan_config['rce_risks']['malicious_commits']:
             self.malicious_commits[commit_to_watch] = re.compile(scan_config['rce_risks']['malicious_commits'][commit_to_watch])
+        for cloud_provider, commands in scan_config['cloud_commands'].items():
+            self.cloud_commands[cloud_provider] = {}
+            for command_name, command_pattern in commands.items():
+                self.cloud_commands[cloud_provider][command_name] = re.compile(command_pattern)
+        for pattern_name, pattern in scan_config['kubernetes_patterns'].items():
+            self.kubernetes_patterns[pattern_name] = re.compile(pattern)
+
         self.vulnerable = {'vulnerable':True}
-    
+
     def risky_command(self, command_string) -> list:
         found_matches = {}
         for regex in self.unsafe_input:
@@ -65,7 +75,7 @@ class WorkflowVulnAudit():
 
     def risky_trigger(self, trigger_name: str) -> bool:
         return bool(trigger_name in self.triggers)
-    
+
     # Find and return every secrets being used in this workflow. If there is a RCE we can pull these secrets.
     def get_secrets(self, full_yaml: str) -> list:
         found_matches = []
@@ -74,7 +84,7 @@ class WorkflowVulnAudit():
                 if match not in found_matches:
                     found_matches.append(match)
         return found_matches
-    
+
     def risky_commit(self, referenced):
         found_matches = {}
         for regex in self.malicious_commits:
@@ -82,4 +92,23 @@ class WorkflowVulnAudit():
                 matched_commits = [commit.group() for commit in matches]
                 if matched_commits:
                     found_matches[regex] = matched_commits
+        return found_matches
+
+    def detect_cloud_commands(self, full_yaml) -> list:
+        found_matches = {}
+        for cloud_provider, commands in self.cloud_commands.items():
+            for command_name, pattern in commands.items():
+                if matches := pattern.finditer(full_yaml):
+                    matched_commands = [command.group() for command in matches]
+                    if matched_commands:
+                        found_matches[f"{cloud_provider}_{command_name}"] = matched_commands
+        return found_matches
+
+    def detect_kubernetes_patterns(self, full_yaml) -> list:
+        found_matches = {}
+        for pattern_name, pattern in self.kubernetes_patterns.items():
+            if matches := pattern.finditer(full_yaml):
+                matched_patterns = [match.group() for match in matches]
+                if matched_patterns:
+                    found_matches[pattern_name] = matched_patterns
         return found_matches

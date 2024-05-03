@@ -13,5 +13,27 @@
         }
     },
     "secrets":"\\${{\\s*secrets\\.[A-Za-z-_0-9]*\\s*}}",
-    "risky_events":["pull_request_target","issues","issue_comment"]
+    "risky_events":["pull_request_target","issues","issue_comment"],
+    "cloud_commands": {
+        "aws": {
+            "aws_sts_assume_role": "aws\\s+sts\\s+assume-role\\s+--role-arn\\s+arn:aws:iam::\\d{12}:role/\\S+",
+            "aws_credentials_with_external_resource": "(AWS_ACCESS_KEY_ID|AWS_SECRET_ACCESS_KEY):\\s*([\"']?)(?:(?!\\2).)\\2[\\s\\S]*?(mysql|mongodb|postgresql|redis|ssh)://\\S+",
+            "aws_signing_helper": "aws_signing_helper"
+        },
+        "gcp": {
+            "gcloud_auth_activate_service_account": "gcloud\\s+auth\\s+activate-service-account\\s+--key-file\\s+\\S+",
+            "gcp_credentials_with_external_resource": "(GOOGLE_APPLICATION_CREDENTIALS):\\s*([\"']?)(?:(?!\\2).)\\2[\\s\\S]*?(mysql|mongodb|postgresql|redis|ssh)://\\S+"
+        },
+        "azure": {
+            "az_login_with_service_principal": "az\\s+login\\s+--service-principal\\s+(?:--username\\s+\\S+\\s+--password\\s+\\S+\\s+--tenant\\s+\\S+|--credential\\s+\\S+)",
+            "azure_credentials_with_external_resource": "(ARM_CLIENT_ID|ARM_CLIENT_SECRET|ARM_TENANT_ID):\\s*([\"']?)(?:(?!\\2).)\\2[\\s\\S]*?(mysql|mongodb|postgresql|redis|ssh)://\\S+"
+        }
+    },
+    "kubernetes_patterns": {
+        "kubectl_with_kubeconfig_flag": "kubectl\\s+(?:.*?\\s+)?--kubeconfig\\s+\\S+",
+        "kubectl_with_kubeconfig_env": "KUBECONFIG:\\s*([\"']?)(?:(?!\\1).)*\\1",
+        "helm_with_kubeconfig_flag": "helm\\s+(?:.*?\\s+)?--kubeconfig\\s+\\S+",
+        "helm_with_kubeconfig_env": "KUBECONFIG:\\s*([\"']?)(?:(?!\\1).)*\\1",
+        "kubeconfig_from_secret": "(?:\\${{)?\\s*secrets\\.KUBECONFIG\\s*(?:}})?|\\$KUBECONFIG"
+    }
 }

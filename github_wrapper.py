@@ -35,35 +35,33 @@ class GHWrapper():
         return valid_status
 
     def call_graphql(self, query):
-        end_time = time.time()
-        headers = {'Authorization':f"Bearer {self.token}",
-                'Content-Type':'application/json'}
-        query_request = requests.post(url='https://api.github.com/graphql',
-                                    json = {'query':query},
-                                    headers = headers)
+        url = 'https://api.github.com/graphql'
+        headers = {
+            'Authorization':f"Bearer {self.token}",
+            'Content-Type':'application/json'
+        }
 
-        AuditLogger.info(f"Query request returned: {query_request}")
-        
-        # Check rate limit headers
-        remaining_points = int(query_request.headers.get('x-ratelimit-remaining', 0))
-        used_points = int(query_request.headers.get('x-ratelimit-used', 0))
-        rate_limit_reset_time = int(query_request.headers.get('x-ratelimit-reset', 0))
+        while True:
+            response = requests.post(url=url, json={'query': query}, headers=headers)
+            remaining_points = int(response.headers.get('x-ratelimit-remaining', 0))
+            used_points = int(response.headers.get('x-ratelimit-used', 0))
+            reset_time = int(response.headers.get('x-ratelimit-reset', 0))
 
-        # Calculate time until rate limit reset (in seconds)
-        time_until_reset = max(rate_limit_reset_time - end_time, 0)
+            AuditLogger.info(f"Remaining rate limit points: {remaining_points}")
+            AuditLogger.info(f"Used rate limit points: {used_points}")
 
-        # Print or log rate limit information
-        AuditLogger.info(f"Remaining rate limit points: {remaining_points}")
-        AuditLogger.info(f"Used rate limit points: {used_points}")
-        AuditLogger.info(f"Rate limit will reset in {time_until_reset} seconds")
+            if remaining_points > 0:
+                if response.status_code == 200:
+                    return response.json()
+                else:
+                    message = response.text
+                    AuditLogger.error(f"GitHub GraphQL Query failed: {message}")
+                    raise RuntimeError(f"GitHub GraphQL Query failed with error: {message}")
+            else:
+                wait_time = reset_time - int(time.time())
+                AuditLogger.info(f"Rate limit exceeded. Waiting for {wait_time} seconds.")
+                time.sleep(wait_time + 5)
 
-        if query_request.status_code == 200:
-            return query_request.json()
-        else:
-            message = query_request.text
-            AuditLogger.error(f"GitHub GraphQL Query failed: {message}")
-            raise RuntimeError(f"GitHub GraphQL Query failed w/ error: {message}")
-    
     def repo_node_parser(self,repo_node):
         workflow_object = repo_node['object']
         repo_workflows = []
@@ -77,7 +75,7 @@ class GHWrapper():
                 if workflow_ext == "yml" or workflow_ext == "yaml":
                     repo_workflows.append({'name':workflow_name,'content':workflow_text})
         return repo_workflows
-    
+
     def get_single_repo(self, repo_name):
         repos_all = {}
         repo_query = return_query('repository',
@@ -127,7 +125,7 @@ class GHWrapper():
                     else:
                         AuditLogger.error("GraphQL response had error.")
                         raise Exception("GraphQL query failed")
-                    
+
                 # If we reach here, all repositories have been fetched successfully
                 return count, repos_all
             except Exception as e:
@@ -151,6 +149,6 @@ class GHWrapper():
             if is_it_user or is_it_org:
                 valid = True
         return valid
-            
-            
+
+
 
