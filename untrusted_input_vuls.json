@@ -1,0 +1,956 @@
+[
+  {
+    "workflow_path": "https://github.com/NREL/OpenStudio-resources/blob/HEAD/.github/workflows/pull_request.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.body in a regular expression search without proper sanitization, potentially allowing for code injection."
+  },
+  {
+    "workflow_path": "https://github.com/mesosphere/kommander-applications/blob/HEAD/.github/workflows/kommander-branch.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.body to extract application versions and then uses these versions in a sed command without proper sanitization, potentially allowing for code injection."
+  },
+  {
+    "workflow_path": "https://github.com/CiscoDevNet/catalystwan/blob/HEAD/.github/workflows/version.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.message to determine the version bump type and then passes it to the poetry version command without proper sanitization, potentially allowing for code injection."
+  },
+  {
+    "workflow_path": "https://github.com/conan-io/conan-clion-plugin/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.release.body to extract the changelog and passes it to the patchChangelog Gradle task without proper sanitization, potentially allowing for code injection."
+  },
+  {
+    "workflow_path": "https://github.com/TykTechnologies/tyk-1/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.message in a curl command without proper sanitization, potentially allowing for code injection."
+  },
+  {
+    "workflow_path": "https://github.com/qgis/QGIS-Documentation/blob/HEAD/.github/workflows/auto-label.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow sets the BODY environment variable using github.event.issue.body and then uses it in a sed command without proper sanitization, potentially allowing for code injection."
+  },
+  {
+    "workflow_path": "https://github.com/forcedotcom/code-analyzer-core/blob/HEAD/.github/workflows/verify-pr.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.title in a regular expression match without proper sanitization, potentially allowing for code injection."
+  },
+  {
+    "workflow_path": "https://github.com/showdownjs/showdown/blob/HEAD/.github/workflows/browserstack.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses github.event.head_commit.message in a printf command. While printf itself is not vulnerable to code injection, using unsanitized user input in command arguments could have unintended consequences depending on how the output is used."
+  },
+  {
+    "workflow_path": "https://github.com/duckduckgo/BrowserServicesKit/blob/HEAD/.github/workflows/create-prs.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.inputs.pr-title in a gh pr create command without proper sanitization, potentially allowing for code injection."
+  },
+  {
+    "workflow_path": "https://github.com/cosmos/cosmos-sdk/blob/HEAD/.github/workflows/dependabot-update-all.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.title to extract dependency name and version, and then uses them in a shell script without proper sanitization, potentially allowing for code injection."
+  },
+  {
+    "workflow_path": "https://github.com/chef/ngx_upstream_jdomain/blob/HEAD/.github/workflows/main.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.message in a regular expression match without proper sanitization, potentially allowing for code injection."
+  },
+  {
+    "workflow_path": "https://github.com/mkdocs/best-of-generator/blob/HEAD/.github/workflows/release-pipeline.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.milestone.title in a sed command and in a conditional expression without proper sanitization, potentially allowing for code injection."
+  },
+  {
+    "workflow_path": "https://github.com/ARM-software/ebbr/blob/HEAD/.github/workflows/main.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.title in a shell script without proper sanitization, potentially allowing for code injection."
+  },
+  {
+    "workflow_path": "https://github.com/Khan/label-studio/blob/HEAD/.github/workflows/follow-merge-upstream-repo-sync.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.client_payload.title in a shell script without proper sanitization, potentially allowing for code injection."
+  },
+  {
+    "workflow_path": "https://github.com/fsprojects/ExcelFinancialFunctions/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.release.body in a dotnet pack command without proper sanitization, potentially allowing for code injection."
+  },
+  {
+    "workflow_path": "https://github.com/MetaMask/ios-branch-deep-linking-attribution/blob/HEAD/.github/workflows/sync-readme-changelog.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.release.body in a shell script without proper sanitization, potentially allowing for code injection."
+  },
+  {
+    "workflow_path": "https://github.com/chaitin/lua-resty-t1k/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.message in a regular expression match and then uses the extracted version in a luarocks upload command without proper sanitization, potentially allowing for code injection."
+  },
+  {
+    "workflow_path": "https://github.com/gradle/actions/blob/HEAD/.github/workflows/ci-integ-test.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.message in a conditional expression without proper sanitization, potentially allowing for code injection."
+  },
+  {
+    "workflow_path": "https://github.com/boostorg/nowide/blob/HEAD/.github/workflows/update_standalone.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.message in a git commit command without proper sanitization, potentially allowing for code injection."
+  },
+  {
+    "workflow_path": "https://github.com/eslint/tsc-meetings/blob/HEAD/.github/workflows/generate-transcript.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.issue.title in a git commit command and in a pull request title and body without proper sanitization, potentially allowing for code injection."
+  },
+  {
+    "workflow_path": "https://github.com/GetStream/stream-chat-js/blob/HEAD/.github/workflows/lint.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses github.event.pull_request.title in an echo command piped to yarn commitlinter. While echo itself is not vulnerable to code injection, using unsanitized user input in command arguments could have unintended consequences depending on how commitlinter processes the input."
+  },
+  {
+    "workflow_path": "https://github.com/jhipster/jhipster-lite/blob/HEAD/.github/workflows/github-actions.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.title in a shell script without proper sanitization, potentially allowing for code injection."
+  },
+  {
+    "workflow_path": "https://github.com/naver/scavenger/blob/HEAD/.github/workflows/tag.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.title in a shell script and a gradlew command without proper sanitization, potentially allowing for code injection."
+  },
+  {
+    "workflow_path": "https://github.com/segmentio/ma-paste-fork/blob/HEAD/.github/workflows/on_release_publish.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses github.event.release.body in echo commands and as slack-text in a Slack notification. While echo itself is not vulnerable to code injection, using unsanitized user input in command arguments could have unintended consequences depending on how the output is used. Additionally, displaying unsanitized user input in Slack messages could lead to XSS vulnerabilities."
+  },
+  {
+    "workflow_path": "https://github.com/rstudio/academyDatasets/blob/HEAD/.github/workflows/pr-commands.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.comment.body in a shell script and passes it to the desc::desc_bump_version function without proper sanitization, potentially allowing for code injection."
+  },
+  {
+    "workflow_path": "https://github.com/obsproject/obs-crowdin-sync/blob/HEAD/.github/workflows/build.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.message in a 'git commit' command. A malicious actor could craft a commit message that includes shell commands, leading to arbitrary code execution on the runner."
+  },
+  {
+    "workflow_path": "https://github.com/dmlc/DeepSpeed/blob/HEAD/.github/workflows/auto-sync.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.message to construct a PR name and uses it in a 'git cherry-pick' command. A malicious actor could craft a commit message that includes shell commands, leading to arbitrary code execution on the runner."
+  },
+  {
+    "workflow_path": "https://github.com/salesforce/secure-pomerium-tunneler/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.release.body to update the changelog. While the provided code snippet doesn't directly execute this input in a shell, it's stored in an environment variable and later used in a 'gradlew patchChangelog' command. Depending on how 'gradlew patchChangelog' handles the input, this could potentially lead to code injection."
+  },
+  {
+    "workflow_path": "https://github.com/dair-ai/comet-llm/blob/HEAD/.github/workflows/unit-tests.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses github.event.pull_request.title in an 'echo' command. While this allows printing the potentially malicious content to the log, it doesn't directly execute it as code. The impact is limited to information disclosure."
+  },
+  {
+    "workflow_path": "https://github.com/ant-design/jest-image-snapshot/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses github.event.head_commit.message in an 'echo' command. While this allows printing the potentially malicious content to the log, it doesn't directly execute it as code. The impact is limited to information disclosure."
+  },
+  {
+    "workflow_path": "https://github.com/PacktPublishing/Build-Your-Own-Web-Framework-in-Elixir/blob/HEAD/.github/workflows/ci.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses github.event.head_commit.message in an 'echo' command. While this allows printing the potentially malicious content to the log, it doesn't directly execute it as code. The impact is limited to information disclosure."
+  },
+  {
+    "workflow_path": "https://github.com/GSA/notifications-api/blob/HEAD/.github/workflows/adr-accepted.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses github.event.issue.title for generating a filename and in a 'git commit' command. While some sanitization is applied to the title when creating the filename, it's unclear if this sanitization is sufficient to prevent command injection in the 'git commit' command. Additionally, github.event.issue.body is used directly in the ADR file content, which could lead to unintended information disclosure."
+  },
+  {
+    "workflow_path": "https://github.com/MaaAssistantArknights/MaaAssistantArknights/blob/HEAD/.github/workflows/gen-changelog.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.title to extract a tag name and uses it in a 'python3' command for changelog generation. A malicious actor could craft a PR title that includes shell commands, leading to arbitrary code execution during changelog generation."
+  },
+  {
+    "workflow_path": "https://github.com/MaaAssistantArknights/MaaAssistantArknights/blob/HEAD/.github/workflows/pr-auto-tag.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.title to extract a tag name and uses it in 'git tag' and 'git merge' commands. A malicious actor could craft a PR title that includes shell commands, leading to arbitrary code execution."
+  },
+  {
+    "workflow_path": "https://github.com/woocommerce/woocommerce/blob/HEAD/.github/workflows/test-assistant-api-rest-change-tracker.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow passes github.event.pull_request.milestone.title to a bash script 'determine_milestone_date.sh'. Without knowing the script's content, it's impossible to definitively determine if it's vulnerable. However, passing unsanitized user input to a script is generally risky and could potentially lead to code injection."
+  },
+  {
+    "workflow_path": "https://github.com/woocommerce/woocommerce/blob/HEAD/.github/workflows/test-assistant-release-highlight-tracker.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow passes github.event.pull_request.milestone.title to a bash script 'determine_milestone_date.sh'. Without knowing the script's content, it's impossible to definitively determine if it's vulnerable. However, passing unsanitized user input to a script is generally risky and could potentially lead to code injection."
+  },
+  {
+    "workflow_path": "https://github.com/taosdata/grafanaplugin/blob/HEAD/.github/workflows/release-pr-merged.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.title to extract a version and uses it in a './scripts/release.sh' command. A malicious actor could craft a PR title that includes shell commands, leading to arbitrary code execution."
+  },
+  {
+    "workflow_path": "https://github.com/taosdata/grafanaplugin/blob/HEAD/.github/workflows/release-pr.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.title to extract a version and uses it in a 'git show-ref' command. A malicious actor could craft a PR title that includes shell commands, leading to arbitrary code execution."
+  },
+  {
+    "workflow_path": "https://github.com/coreos/fedora-coreos-streams/blob/HEAD/.github/workflows/promote-config.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.issue.title to extract a stream name and uses it in multiple shell commands, including 'curl' and conditional statements. A malicious actor could craft an issue title that includes shell commands, leading to arbitrary code execution."
+  },
+  {
+    "workflow_path": "https://github.com/coreos/coreos-installer-dracut/blob/HEAD/.github/workflows/integration.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.comment.body to extract repository and branch information, which is then used in 'actions/checkout' steps and 'make rpm' commands. A malicious actor could craft a comment that includes shell commands, leading to arbitrary code execution during the build process."
+  },
+  {
+    "workflow_path": "https://github.com/codex-team/notes.api/blob/HEAD/.github/workflows/send-test-results.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses github.event.pull_request.title in an 'echo' command for constructing a message. While this allows printing the potentially malicious content to the log and including it in a Slack message, it doesn't directly execute it as code. The impact is limited to information disclosure."
+  },
+  {
+    "workflow_path": "https://github.com/codex-team/notes.web/blob/HEAD/.github/workflows/send-test-results.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses github.event.pull_request.title in an 'echo' command for constructing a message. While this allows printing the potentially malicious content to the log and including it in a Slack message, it doesn't directly execute it as code. The impact is limited to information disclosure."
+  },
+  {
+    "workflow_path": "https://github.com/llvm/temp-issue-tester/blob/HEAD/.github/workflows/contains-test.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses github.event.issue.body and github.event.comment.body in an 'echo' command. While this allows printing the potentially malicious content to the log, it doesn't directly execute it as code. The impact is limited to information disclosure."
+  },
+  {
+    "workflow_path": "https://github.com/WordPress/wordpress-develop/blob/HEAD/.github/workflows/slack-notifications.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.message in a complex expression that includes 'awk' and 'sed' commands. A malicious actor could craft a commit message that manipulates these commands, potentially leading to arbitrary code execution."
+  },
+  {
+    "workflow_path": "https://github.com/WordPress/gutenberg/blob/HEAD/.github/workflows/upload-release-to-plugin-repo.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.release.body to update the changelog and includes it in a 'cat' command. While the provided code snippet uses a heredoc to handle the input, it's unclear if this is sufficient to prevent potential code injection depending on how the input is later processed."
+  },
+  {
+    "workflow_path": "https://github.com/trailofbits/cosmos-sdk/blob/HEAD/.github/workflows/dependabot-update-all.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.title to extract dependency information and uses it in a './scripts/go-update-dep-all.sh' command. A malicious actor could craft a PR title that includes shell commands, leading to arbitrary code execution."
+  },
+  {
+    "workflow_path": "https://github.com/getsentry/hackweek-sentry-intellij-plugin/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.release.body to update the changelog. While the provided code snippet doesn't directly execute this input in a shell, it's stored in an environment variable and later used in a 'gradlew patchChangelog' command. Depending on how 'gradlew patchChangelog' handles the input, this could potentially lead to code injection."
+  },
+  {
+    "workflow_path": "https://github.com/huggingface/trl/blob/HEAD/.github/workflows/benchmark.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.comment.body to determine which benchmark script to run and executes it using 'bash'. A malicious actor could craft a comment that includes shell commands, leading to arbitrary code execution."
+  },
+  {
+    "workflow_path": "https://github.com/huggingface/trident/blob/HEAD/.github/workflows/github-actions.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses github.event.pull_request.title in an 'echo' command. While this allows printing the potentially malicious content to the log, it doesn't directly execute it as code. The impact is limited to information disclosure."
+  },
+  {
+    "workflow_path": "https://github.com/freeCodeCamp/chinese/blob/HEAD/.github/workflows/WebPageToMarkdown.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.issue.body as input to the 'freeCodeCamp-China/article-webpage-to-markdown-action' action. While the action itself might sanitize the input, it's unclear how it handles potentially malicious content. Depending on the action's implementation, this could lead to code injection or other vulnerabilities."
+  },
+  {
+    "workflow_path": "https://github.com/freeCodeCamp/news-translation-tasks/blob/HEAD/.github/workflows/slash-command-action.yml",
+    "exploit_type": "None",
+    "exploit_severity": "very low",
+    "exploit_info": "The workflow uses the 'startsWith' function to check if the comment body starts with specific strings ('/translate' or '/review'). This effectively limits the user input to these predefined commands, preventing arbitrary command injection."
+  },
+  {
+    "workflow_path": "https://github.com/Hammerspoon/hammerspoon/blob/HEAD/.github/workflows/ci_testbuild.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.author.name directly in a curl command that sends a notification. A malicious actor could craft a commit with a specially crafted author name containing shell metacharacters to inject arbitrary commands into the curl command."
+  },
+  {
+    "workflow_path": "https://github.com/tweag/hello-plutarch/blob/HEAD/.github/workflows/template.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.message to construct a commit message. A malicious actor could craft a commit message containing shell metacharacters that would be interpreted as commands when the commit message is used in a 'git commit' command."
+  },
+  {
+    "workflow_path": "https://github.com/lyft/SavvyCan/blob/HEAD/.github/workflows/build.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.message in a curl command that sends a notification to Discord. A malicious actor could craft a commit message containing shell metacharacters to inject arbitrary commands into the curl command."
+  },
+  {
+    "workflow_path": "https://github.com/lyft/libevent/blob/HEAD/.github/workflows/abi.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses both github.event.head_commit.author.name and github.event.head_commit.author.email in a series of git commands. A malicious actor could craft a commit with a specially crafted author name or email containing shell metacharacters to inject arbitrary commands into the git commands."
+  },
+  {
+    "workflow_path": "https://github.com/lyft/libevent/blob/HEAD/.github/workflows/doxygen.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses both github.event.head_commit.author.name and github.event.head_commit.author.email in a series of git commands. A malicious actor could craft a commit with a specially crafted author name or email containing shell metacharacters to inject arbitrary commands into the git commands."
+  },
+  {
+    "workflow_path": "https://github.com/AliyunContainerService/ackdistro/blob/HEAD/.github/workflows/auto-build.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.comment.body to extract tag and branch information, which are then used in shell commands. A malicious actor could craft a comment containing shell metacharacters to inject arbitrary commands into these shell commands."
+  },
+  {
+    "workflow_path": "https://github.com/AliyunContainerService/ackdistro/blob/HEAD/.github/workflows/test.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.comment.body to extract imageName, network, e2e, and hold information, which are then used in a 'ginkgo' command. A malicious actor could craft a comment containing shell metacharacters to inject arbitrary commands into the 'ginkgo' command."
+  },
+  {
+    "workflow_path": "https://github.com/AliyunContainerService/keda/blob/HEAD/.github/workflows/pr-e2e.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.comment.body to extract a regular expression for filtering tests. A malicious actor could craft a comment containing a malicious regular expression that, when used in the 'make e2e-test' command, could lead to arbitrary code execution."
+  },
+  {
+    "workflow_path": "https://github.com/SAP/machine-learning-lab/blob/HEAD/.github/workflows/release-pipeline.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.milestone.title to extract a version number, which is then used in various shell commands, including 'sed', 'echo', and 'hub pull-request'. A malicious actor could create a milestone with a title containing shell metacharacters to inject arbitrary commands into these shell commands."
+  },
+  {
+    "workflow_path": "https://github.com/aliyun/terraform-provider-alicloud/blob/HEAD/.github/workflows/pull_requests.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.title in a series of shell commands that check the PR title for specific patterns. A malicious actor could craft a PR title containing shell metacharacters to inject arbitrary commands into these shell commands."
+  },
+  {
+    "workflow_path": "https://github.com/aliyun/ros-templates/blob/HEAD/.github/workflows/iact3-test.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.user.login, github.event.pull_request.number, and github.event.pull_request.title in curl commands that send notifications to DingTalk. A malicious actor could craft a pull request with a specially crafted user login, number, or title containing shell metacharacters to inject arbitrary commands into the curl commands."
+  },
+  {
+    "workflow_path": "https://github.com/aliyun/alibabacloud-landing-zone/blob/HEAD/.github/workflows/truffleHog.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.message in a curl command that sends a notification to DingTalk. A malicious actor could craft a commit message containing shell metacharacters to inject arbitrary commands into the curl command."
+  },
+  {
+    "workflow_path": "https://github.com/scikit-learn/scikit-learn/blob/HEAD/.github/workflows/check-changelog.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses github.event.pull_request.milestone.title to construct a file path for checking changelog entries. While this could potentially be used for path traversal, the impact is limited as the workflow only reads the changelog file and does not execute any code from it."
+  },
+  {
+    "workflow_path": "https://github.com/scikit-learn/scikit-learn-benchmarks/blob/HEAD/.github/workflows/check_last_run.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.message to extract a commit hash, which is then used in shell commands to check benchmark results. A malicious actor could craft a commit message containing shell metacharacters to inject arbitrary commands into these shell commands."
+  },
+  {
+    "workflow_path": "https://github.com/Automattic/gutenberg/blob/HEAD/.github/workflows/upload-release-to-plugin-repo.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.release.body to update the changelog file. A malicious actor could craft a release body containing shell metacharacters that would be interpreted as commands when the changelog is updated."
+  },
+  {
+    "workflow_path": "https://github.com/Automattic/gutenberg-big-sky/blob/HEAD/.github/workflows/upload-release-to-plugin-repo.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.release.body to update the changelog file. A malicious actor could craft a release body containing shell metacharacters that would be interpreted as commands when the changelog is updated."
+  },
+  {
+    "workflow_path": "https://github.com/elastic/cloudbeat/blob/HEAD/.github/workflows/rerun-flaky-workflows.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses github.event.workflow_run.head_commit.author.name to display information about the workflow run. While this could potentially be used for information disclosure, the impact is limited as the workflow does not execute any code based on this input."
+  },
+  {
+    "workflow_path": "https://github.com/elastic/idea-indexing-metrics-collector/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.release.body to extract the changelog content and uses it in a 'patchChangelog' Gradle task. A malicious actor could craft a release body containing malicious code that could be executed during the Gradle task."
+  },
+  {
+    "workflow_path": "https://github.com/NVIDIA/cccl/blob/HEAD/.github/workflows/project_automation_set_in_progress.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses github.event.review.state in a conditional statement. While this could potentially be used for logic manipulation, the impact is limited as the workflow does not execute any code based on this input."
+  },
+  {
+    "workflow_path": "https://github.com/Tencent/tdesign-mobile-react/blob/HEAD/.github/workflows/auto-release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.comment.body to update the CHANGELOG.md file. A malicious actor could craft a comment containing shell metacharacters that would be interpreted as commands when the changelog is updated."
+  },
+  {
+    "workflow_path": "https://github.com/Tencent/tdesign-miniprogram/blob/HEAD/.github/workflows/auto-release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.comment.body to update the CHANGELOG.md file. A malicious actor could craft a comment containing shell metacharacters that would be interpreted as commands when the changelog is updated."
+  },
+  {
+    "workflow_path": "https://github.com/Tencent/tdesign-miniprogram/blob/HEAD/.github/workflows/preview.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.comment.body to extract a robot identifier and uses it in a 'setup-miniprogram' action. A malicious actor could craft a comment containing malicious code that could be executed during the action."
+  },
+  {
+    "workflow_path": "https://github.com/alteryx/featuretools/blob/HEAD/.github/workflows/looking_glass_airflow_performance_tests.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.author.name in a curl command that sends data to an Airflow server. A malicious actor could craft a commit with a specially crafted author name containing shell metacharacters to inject arbitrary commands into the curl command."
+  },
+  {
+    "workflow_path": "https://github.com/alteryx/evalml/blob/HEAD/.github/workflows/evalml_main_airflow_performance_tests.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.author.name in a curl command that sends data to an Airflow server. A malicious actor could craft a commit with a specially crafted author name containing shell metacharacters to inject arbitrary commands into the curl command."
+  },
+  {
+    "workflow_path": "https://github.com/alteryx/woodwork/blob/HEAD/.github/workflows/woodwork_main_airflow_performance_tests.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.author.name directly in a curl command that interacts with an Airflow server. A malicious actor could potentially craft a commit with a specially crafted author name to inject malicious code into the command."
+  },
+  {
+    "workflow_path": "https://github.com/10up/wordpress-develop/blob/HEAD/.github/workflows/slack-notifications.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.message in a script that prepares a commit message. Although the script attempts to escape backticks and double quotes, it's still possible for an attacker to inject arbitrary commands using techniques like shell variable expansion or command substitution."
+  },
+  {
+    "workflow_path": "https://github.com/10up/10up-elementor-collaboration/blob/HEAD/.github/workflows/pr-linter.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.title directly in a shell command that pipes the title to the commitlint tool. An attacker could craft a malicious pull request title to inject arbitrary commands into the shell."
+  },
+  {
+    "workflow_path": "https://github.com/openshift/loki/blob/HEAD/.github/workflows/operator-check-prepare-release-commit.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.title in a shell script that extracts a semver version. An attacker could craft a malicious pull request title to inject arbitrary commands into the shell script."
+  },
+  {
+    "workflow_path": "https://github.com/sourcegraph/sourcegraph-jetbrains/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.release.body in a shell script that sets an environment variable and uses it in a gradlew command. An attacker could craft a malicious release body to inject arbitrary commands into the shell script."
+  },
+  {
+    "workflow_path": "https://github.com/alibaba/GraphScope/blob/HEAD/.github/workflows/pr-check.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.title in a shell script that checks for documentation changes. An attacker could craft a malicious pull request title to inject arbitrary commands into the shell script."
+  },
+  {
+    "workflow_path": "https://github.com/Orange-OpenSource/hurl-manage-release/blob/HEAD/.github/workflows/accept-pull-request.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.issue.title in a shell script that initializes environment variables. An attacker could craft a malicious issue title to inject arbitrary commands into the shell script."
+  },
+  {
+    "workflow_path": "https://github.com/awslabs/clickstream-android/blob/HEAD/.github/workflows/tag_and_release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.message to set an environment variable COMMIT_MESSAGE, which is later used in a shell script. An attacker could craft a malicious commit message to inject arbitrary commands into the shell script."
+  },
+  {
+    "workflow_path": "https://github.com/awslabs/clickstream-swift/blob/HEAD/.github/workflows/tag_and_release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.message to set an environment variable COMMIT_MESSAGE, which is later used in a shell script. An attacker could craft a malicious commit message to inject arbitrary commands into the shell script."
+  },
+  {
+    "workflow_path": "https://github.com/pusher/pusher-http-ruby/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.body in a shell script that prepares a changelog file. An attacker could craft a malicious pull request body to inject arbitrary commands into the shell script."
+  },
+  {
+    "workflow_path": "https://github.com/pusher/pusher-http-php/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.body in a shell script that prepares a changelog file. An attacker could craft a malicious pull request body to inject arbitrary commands into the shell script."
+  },
+  {
+    "workflow_path": "https://github.com/pusher/pusher-http-dotnet/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.body in a shell script that prepares a changelog file. An attacker could craft a malicious pull request body to inject arbitrary commands into the shell script."
+  },
+  {
+    "workflow_path": "https://github.com/pusher/pusher-websocket-dotnet/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.body in a shell script that prepares a changelog file. An attacker could craft a malicious pull request body to inject arbitrary commands into the shell script."
+  },
+  {
+    "workflow_path": "https://github.com/pusher/push-notifications-ruby/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.body in a shell script that prepares a changelog file. An attacker could craft a malicious pull request body to inject arbitrary commands into the shell script."
+  },
+  {
+    "workflow_path": "https://github.com/pusher/push-notifications-node/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.body in a shell script that prepares a changelog file. An attacker could craft a malicious pull request body to inject arbitrary commands into the shell script."
+  },
+  {
+    "workflow_path": "https://github.com/juspay/hyper-sdk-react/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.title in a shell script that determines the release type. An attacker could craft a malicious pull request title to inject arbitrary commands into the shell script."
+  },
+  {
+    "workflow_path": "https://github.com/juspay/hyper-sdk-cordova/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.title in a shell script that determines the release type. An attacker could craft a malicious pull request title to inject arbitrary commands into the shell script."
+  },
+  {
+    "workflow_path": "https://github.com/juspay/hyper-sdk-capacitor/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.title in a shell script that determines the release type. An attacker could craft a malicious pull request title to inject arbitrary commands into the shell script."
+  },
+  {
+    "workflow_path": "https://github.com/juspay/hyperswitch-web/blob/HEAD/.github/workflows/conventional-commit-check.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.merge_group.head_commit.message directly in a shell command that runs the 'cog verify' command. An attacker could potentially create a merge group with a malicious commit message to inject arbitrary commands into the shell."
+  },
+  {
+    "workflow_path": "https://github.com/broadinstitute/cromwell/blob/HEAD/.github/workflows/scalafmt-fix.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.comment.body in a conditional statement that determines whether to run a ScalaFmt fixup. An attacker could potentially trigger the fixup by leaving a comment containing the word 'scalafmt' and inject arbitrary commands into the subsequent 'sbt scalafmtAll' command."
+  },
+  {
+    "workflow_path": "https://github.com/broadinstitute/taigapy/blob/HEAD/.github/workflows/check_pr_title.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.title directly in a shell command that runs the 'cz check' command. An attacker could craft a malicious pull request title to inject arbitrary commands into the shell."
+  },
+  {
+    "workflow_path": "https://github.com/broadinstitute/cromwhelm/blob/HEAD/.github/workflows/update-and-publish-helm-chart.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.message in a shell script that extracts a Jira ID. An attacker could craft a malicious commit message to inject arbitrary commands into the shell script."
+  },
+  {
+    "workflow_path": "https://github.com/ClickHouse/retina/blob/HEAD/.github/workflows/commit-message.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.title in a shell script that verifies the commit message format. An attacker could craft a malicious pull request title to inject arbitrary commands into the shell script."
+  },
+  {
+    "workflow_path": "https://github.com/influxdata/intellij-flux/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.release.body in a shell script that sets an environment variable and uses it in a gradlew command. An attacker could craft a malicious release body to inject arbitrary commands into the shell script."
+  },
+  {
+    "workflow_path": "https://github.com/ansible/awx/blob/HEAD/.github/workflows/update_dependabot_prs.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.body to set an environment variable PR_BODY, which is later used in a shell script. An attacker could craft a malicious pull request body to inject arbitrary commands into the shell script."
+  },
+  {
+    "workflow_path": "https://github.com/Shopify/airbyte/blob/HEAD/.github/workflows/commands-for-testing-tool.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow is vulnerable to command injection due to the usage of unsanitized user input from `github.event.comment.body` in a `docker run` command. A malicious actor could craft a comment that injects arbitrary commands into the container execution, potentially gaining control of the runner and accessing sensitive information like secrets."
+  },
+  {
+    "workflow_path": "https://github.com/pact-foundation/pact-jvm/blob/HEAD/.github/workflows/issue-comment-created.yml",
+    "exploit_type": "None",
+    "exploit_severity": "very low",
+    "exploit_info": "While the workflow uses `github.event.comment.body` and `github.event.issue.title`, it does so within the context of `echo` commands and as arguments for the `atlassian/gajira-create` action. These usages treat the input as data, not executable code, making it non-exploitable for command injection."
+  },
+  {
+    "workflow_path": "https://github.com/pact-foundation/pact-reference/blob/HEAD/.github/workflows/issue-comment-created.yml",
+    "exploit_type": "None",
+    "exploit_severity": "very low",
+    "exploit_info": "Similar to the previous workflow, this one uses `github.event.comment.body` and `github.event.issue.title` within `echo` commands and as arguments for the `atlassian/gajira-create` action. This usage is not vulnerable to command injection."
+  },
+  {
+    "workflow_path": "https://github.com/pact-foundation/.github/blob/HEAD/.github/workflows/smartbear-issue-comment-created.yml",
+    "exploit_type": "None",
+    "exploit_severity": "very low",
+    "exploit_info": "The workflow uses `github.event.comment.body`, `github.event.issue.title`, and `github.event.issue.body` within `echo` commands and as arguments for the `atlassian/gajira-create` action. These usages are not vulnerable to command injection."
+  },
+  {
+    "workflow_path": "https://github.com/pact-foundation/.github/blob/HEAD/.github/workflows/smartbear-pull-request-assigned.yaml",
+    "exploit_type": "None",
+    "exploit_severity": "very low",
+    "exploit_info": "The workflow uses `github.event.pull_request.title` within an `echo` command and as an argument for the `atlassian/gajira-find-issue-key` action. This usage is not vulnerable to command injection."
+  },
+  {
+    "workflow_path": "https://github.com/pact-foundation/.github/blob/HEAD/.github/workflows/smartbear-pull-request-comment-created.yaml",
+    "exploit_type": "None",
+    "exploit_severity": "very low",
+    "exploit_info": "The workflow uses `github.event.issue.title` within an `echo` command and as an argument for the `atlassian/gajira-find-issue-key` action. This usage is not vulnerable to command injection."
+  },
+  {
+    "workflow_path": "https://github.com/pact-foundation/.github/blob/HEAD/.github/workflows/smartbear-pull-request-merged.yaml",
+    "exploit_type": "None",
+    "exploit_severity": "very low",
+    "exploit_info": "The workflow uses `github.event.pull_request.title` within an `echo` command and as an argument for the `tomhjp/gh-action-jira-search` action. This usage is not vulnerable to command injection."
+  },
+  {
+    "workflow_path": "https://github.com/pact-foundation/.github/blob/HEAD/.github/workflows/smartbear-pull-request-review-submitted.yaml",
+    "exploit_type": "None",
+    "exploit_severity": "very low",
+    "exploit_info": "The workflow uses `github.event.pull_request.title` within an `echo` command and as an argument for the `atlassian/gajira-find-issue-key` action. This usage is not vulnerable to command injection."
+  },
+  {
+    "workflow_path": "https://github.com/zendesk/karpenter/blob/HEAD/.github/workflows/approval-comment.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses `github.event.review.commit_id` in a shell script to write to a file. While the impact is limited to file manipulation within the runner, a malicious actor could potentially use this to disrupt the workflow or plant malicious files."
+  },
+  {
+    "workflow_path": "https://github.com/apache/hudi-rs/blob/HEAD/.github/workflows/pr.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses `github.event.pull_request.title` as input to the `commitlint` command. While this could potentially lead to unexpected behavior in the linting process, it's unlikely to allow arbitrary code execution."
+  },
+  {
+    "workflow_path": "https://github.com/npm/ci-detect/blob/HEAD/.github/workflows/pull-request.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses `github.event.pull_request.title` as input to the `commitlint` command. While this could potentially lead to unexpected behavior in the linting process, it's unlikely to allow arbitrary code execution."
+  },
+  {
+    "workflow_path": "https://github.com/npm/move-file/blob/HEAD/.github/workflows/pull-request.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses `github.event.pull_request.title` as input to the `commitlint` command. While this could potentially lead to unexpected behavior in the linting process, it's unlikely to allow arbitrary code execution."
+  },
+  {
+    "workflow_path": "https://github.com/npm/config/blob/HEAD/.github/workflows/pull-request.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses `github.event.pull_request.title` as input to the `commitlint` command. While this could potentially lead to unexpected behavior in the linting process, it's unlikely to allow arbitrary code execution."
+  },
+  {
+    "workflow_path": "https://github.com/npm/npm-birthday/blob/HEAD/.github/workflows/pull-request.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses `github.event.pull_request.title` as input to the `commitlint` command. While this could potentially lead to unexpected behavior in the linting process, it's unlikely to allow arbitrary code execution."
+  },
+  {
+    "workflow_path": "https://github.com/npm/exec/blob/HEAD/.github/workflows/pull-request.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses `github.event.pull_request.title` as input to the `commitlint` command. While this could potentially lead to unexpected behavior in the linting process, it's unlikely to allow arbitrary code execution."
+  },
+  {
+    "workflow_path": "https://github.com/npm/nock-registry/blob/HEAD/.github/workflows/pull-request.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses `github.event.pull_request.title` as input to the `commitlint` command. While this could potentially lead to unexpected behavior in the linting process, it's unlikely to allow arbitrary code execution."
+  },
+  {
+    "workflow_path": "https://github.com/npm/publish-test/blob/HEAD/.github/workflows/pull-request.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses `github.event.pull_request.title` as input to the `commitlint` command. While this could potentially lead to unexpected behavior in the linting process, it's unlikely to allow arbitrary code execution."
+  },
+  {
+    "workflow_path": "https://github.com/Kong/kong/blob/HEAD/.github/workflows/perf.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses `github.event.comment.body` to determine test suites and tags, which are then used in a `bin/busted` command. This could allow a malicious actor to inject arbitrary commands via a crafted comment, potentially gaining control of the runner."
+  },
+  {
+    "workflow_path": "https://github.com/Kong/kubernetes-ingress-controller/blob/HEAD/.github/workflows/validate_kong_image_trigger_via_label.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow extracts the container image repo and tag from `github.event.issue.body` and uses them in a `gh workflow run` command. A malicious actor could craft an issue body that injects arbitrary values for the repo and tag, potentially leading to the execution of untrusted container images."
+  },
+  {
+    "workflow_path": "https://github.com/Kong/colin-kong/blob/HEAD/.github/workflows/perf.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "Similar to Workflow 18, this workflow uses `github.event.comment.body` to determine test suites and tags, which are then used in a `bin/busted` command. This could allow a malicious actor to inject arbitrary commands via a crafted comment, potentially gaining control of the runner."
+  },
+  {
+    "workflow_path": "https://github.com/webdriverio/appium-boilerplate/blob/HEAD/.github/workflows/e2e-android-app.yml",
+    "exploit_type": "None",
+    "exploit_severity": "very low",
+    "exploit_info": "The workflow uses `github.event.pull_request.title` in a `grep` command to check for specific dependencies. This usage treats the input as data, not executable code, making it non-exploitable for command injection."
+  },
+  {
+    "workflow_path": "https://github.com/webdriverio/visual-testing/blob/HEAD/.github/workflows/tests.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses `github.event.pull_request.title` in regular expression matching to determine which tests to run. While this could potentially lead to unexpected test execution, it's unlikely to allow arbitrary code execution."
+  },
+  {
+    "workflow_path": "https://github.com/Azure/karpenter-provider-azure/blob/HEAD/.github/workflows/approval-comment.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses `github.event.pull_request.number` and `github.event.review.commit_id` in a shell script to write to a file. While the impact is limited to file manipulation within the runner, a malicious actor could potentially use this to disrupt the workflow or plant malicious files."
+  },
+  {
+    "workflow_path": "https://github.com/Samsung/Universum/blob/HEAD/.github/workflows/telegram-bot.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses various event data, including `github.event.pull_request`, `github.event.comment`, `github.event.review`, and `github.event.workflow_run`, to construct messages sent to a Telegram bot. While the primary risk is information disclosure, a malicious actor could potentially craft inputs that lead to the execution of arbitrary commands within the Telegram bot environment if the bot itself is vulnerable."
+  },
+  {
+    "workflow_path": "https://github.com/gchq/Gaffer/blob/HEAD/.github/workflows/release.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses `github.event.milestone.title` to determine the release version and branch name, which are then used in various shell commands, including `git merge`, `git tag`, `git push`, and `mvn` commands. A malicious actor could create a milestone with a crafted title that injects arbitrary commands, potentially gaining control of the runner and compromising the repository."
+  },
+  {
+    "workflow_path": "https://github.com/gchq/gaffer-docker/blob/HEAD/.github/workflows/release.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.milestone.title to construct shell commands without proper sanitization in multiple steps. A malicious actor could create a milestone with a title containing malicious code, leading to arbitrary command execution on the runner. This allows potential exfiltration of secrets like ADMIN_GITHUB_TOKEN and GITHUB_TOKEN, as well as modification of repository content."
+  },
+  {
+    "workflow_path": "https://github.com/gchq/gaffer-tools/blob/HEAD/.github/workflows/release.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.milestone.title to construct shell commands without proper sanitization in multiple steps. A malicious actor could create a milestone with a title containing malicious code, leading to arbitrary command execution on the runner. This allows potential exfiltration of secrets like ADMIN_GITHUB_TOKEN, GPG_KEY_NAME, GPG_PASSPHRASE, OSS_NEXUS_USERNAME, and OSS_NEXUS_PASSWORD."
+  },
+  {
+    "workflow_path": "https://github.com/gchq/koryphe/blob/HEAD/.github/workflows/release.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.milestone.title to construct shell commands without proper sanitization in multiple steps. A malicious actor could create a milestone with a title containing malicious code, leading to arbitrary command execution on the runner. This allows potential exfiltration of secrets like ADMIN_GITHUB_TOKEN, GPG_KEY_NAME, GPG_PASSPHRASE, OSS_NEXUS_USERNAME, and OSS_NEXUS_PASSWORD."
+  },
+  {
+    "workflow_path": "https://github.com/DataDog/airbyte/blob/HEAD/.github/workflows/commands-for-testing-tool.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "very high",
+    "exploit_info": "The workflow passes github.event.comment.body directly to a docker run command without sanitization. A malicious actor could submit a pull request with a crafted comment containing malicious code, leading to arbitrary code execution within the docker container. This allows potential access to secrets mounted within the container, including AIRBYTEIO_PAT, OSS_BUILD_RUNNER_GITHUB_PAT, SUPERTOPHER_PAT, DAVINCHIA_PAT, and GCP_GSM_CREDENTIALS_FOR_TESTING_TOOL."
+  },
+  {
+    "workflow_path": "https://github.com/JetBrains/Grammar-Kit/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses github.event.release.body to update the changelog file. While this doesn't directly allow code execution, a malicious actor could craft a release body containing malicious markdown content, potentially leading to cross-site scripting (XSS) vulnerabilities when the changelog is viewed."
+  },
+  {
+    "workflow_path": "https://github.com/JetBrains/idea-gitignore/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses github.event.release.body to update the changelog file. While this doesn't directly allow code execution, a malicious actor could craft a release body containing malicious markdown content, potentially leading to cross-site scripting (XSS) vulnerabilities when the changelog is viewed."
+  },
+  {
+    "workflow_path": "https://github.com/JetBrains/intellij-platform-gradle-plugin/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses github.event.release.body to update the changelog file. While this doesn't directly allow code execution, a malicious actor could craft a release body containing malicious markdown content, potentially leading to cross-site scripting (XSS) vulnerabilities when the changelog is viewed."
+  },
+  {
+    "workflow_path": "https://github.com/JetBrains/gradle-grammar-kit-plugin/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses github.event.release.body to update the changelog file. While this doesn't directly allow code execution, a malicious actor could craft a release body containing malicious markdown content, potentially leading to cross-site scripting (XSS) vulnerabilities when the changelog is viewed."
+  },
+  {
+    "workflow_path": "https://github.com/JetBrains/azure-tools-for-intellij/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses github.event.release.body to update the changelog file. While this doesn't directly allow code execution, a malicious actor could craft a release body containing malicious markdown content, potentially leading to cross-site scripting (XSS) vulnerabilities when the changelog is viewed."
+  },
+  {
+    "workflow_path": "https://github.com/JetBrains/intellij-platform-plugin-template/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses github.event.release.body to update the changelog file. While this doesn't directly allow code execution, a malicious actor could craft a release body containing malicious markdown content, potentially leading to cross-site scripting (XSS) vulnerabilities when the changelog is viewed."
+  },
+  {
+    "workflow_path": "https://github.com/JetBrains/gradle-changelog-plugin/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses github.event.release.body to update the changelog file. While this doesn't directly allow code execution, a malicious actor could craft a release body containing malicious markdown content, potentially leading to cross-site scripting (XSS) vulnerabilities when the changelog is viewed."
+  },
+  {
+    "workflow_path": "https://github.com/JetBrains/pest-intellij/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses github.event.release.body to update the changelog file. While this doesn't directly allow code execution, a malicious actor could craft a release body containing malicious markdown content, potentially leading to cross-site scripting (XSS) vulnerabilities when the changelog is viewed."
+  },
+  {
+    "workflow_path": "https://github.com/JetBrains/tinygo-plugin/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses github.event.release.body to update the changelog file. While this doesn't directly allow code execution, a malicious actor could craft a release body containing malicious markdown content, potentially leading to cross-site scripting (XSS) vulnerabilities when the changelog is viewed."
+  },
+  {
+    "workflow_path": "https://github.com/JetBrains/EzArgs/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses github.event.release.body to update the changelog file. While this doesn't directly allow code execution, a malicious actor could craft a release body containing malicious markdown content, potentially leading to cross-site scripting (XSS) vulnerabilities when the changelog is viewed."
+  },
+  {
+    "workflow_path": "https://github.com/JetBrains/datagrip-drivers-plugin/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses github.event.release.body to update the changelog file. While this doesn't directly allow code execution, a malicious actor could craft a release body containing malicious markdown content, potentially leading to cross-site scripting (XSS) vulnerabilities when the changelog is viewed."
+  },
+  {
+    "workflow_path": "https://github.com/JetBrains/EnhancedUnrealEngineDocumentation/blob/HEAD/.github/workflows/release.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses github.event.release.body to update the changelog file. While this doesn't directly allow code execution, a malicious actor could craft a release body containing malicious markdown content, potentially leading to cross-site scripting (XSS) vulnerabilities when the changelog is viewed."
+  },
+  {
+    "workflow_path": "https://github.com/4GeeksAcademy/DeepSpeed/blob/HEAD/.github/workflows/auto-sync.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.message to construct the PR name and title, and then uses it in a git cherry-pick command. A malicious actor could push a commit with a crafted message containing malicious code, leading to arbitrary command execution during the cherry-pick operation. This could allow modification of the target repository."
+  },
+  {
+    "workflow_path": "https://github.com/Unity-Technologies/ROS-TCP-Endpoint/blob/HEAD/.github/workflows/jira-link.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses github.event.pull_request.title and github.event.pull_request.head.ref in an echo command and for comparison in a conditional statement. While this doesn't directly allow code execution, a malicious actor could create a pull request with a crafted title or branch name containing special characters that could lead to unexpected behavior or output in the workflow logs."
+  },
+  {
+    "workflow_path": "https://github.com/Unity-Technologies/ROS-TCP-Connector/blob/HEAD/.github/workflows/jira-link.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses github.event.pull_request.title and github.event.pull_request.head.ref in an echo command and for comparison in a conditional statement. While this doesn't directly allow code execution, a malicious actor could create a pull request with a crafted title or branch name containing special characters that could lead to unexpected behavior or output in the workflow logs."
+  },
+  {
+    "workflow_path": "https://github.com/Unity-Technologies/Unity-Robotics-Hub/blob/HEAD/.github/workflows/jira-link.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses github.event.pull_request.title and github.event.pull_request.head.ref in an echo command and for comparison in a conditional statement. While this doesn't directly allow code execution, a malicious actor could create a pull request with a crafted title or branch name containing special characters that could lead to unexpected behavior or output in the workflow logs."
+  },
+  {
+    "workflow_path": "https://github.com/Unity-Technologies/URDF-Importer/blob/HEAD/.github/workflows/jira-link.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses github.event.pull_request.title and github.event.pull_request.head.ref in an echo command and for comparison in a conditional statement. While this doesn't directly allow code execution, a malicious actor could create a pull request with a crafted title or branch name containing special characters that could lead to unexpected behavior or output in the workflow logs."
+  },
+  {
+    "workflow_path": "https://github.com/Unity-Technologies/Robotics-Object-Pose-Estimation/blob/HEAD/.github/workflows/jira-link.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses github.event.pull_request.title and github.event.pull_request.head.ref in an echo command and for comparison in a conditional statement. While this doesn't directly allow code execution, a malicious actor could create a pull request with a crafted title or branch name containing special characters that could lead to unexpected behavior or output in the workflow logs."
+  },
+  {
+    "workflow_path": "https://github.com/Unity-Technologies/Robotics-Warehouse/blob/HEAD/.github/workflows/jira-link.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses github.event.pull_request.title and github.event.pull_request.head.ref in an echo command and for comparison in a conditional statement. While this doesn't directly allow code execution, a malicious actor could create a pull request with a crafted title or branch name containing special characters that could lead to unexpected behavior or output in the workflow logs."
+  },
+  {
+    "workflow_path": "https://github.com/Unity-Technologies/VHACD/blob/HEAD/.github/workflows/jira-link.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "low",
+    "exploit_info": "The workflow uses github.event.pull_request.title and github.event.pull_request.head.ref in an echo command and for comparison in a conditional statement. While this doesn't directly allow code execution, a malicious actor could create a pull request with a crafted title or branch name containing special characters that could lead to unexpected behavior or output in the workflow logs."
+  },
+  {
+    "workflow_path": "https://github.com/weaveworks/weave-gitops/blob/HEAD/.github/workflows/release.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses github.event.pull_request.body to create a changelog file that is passed to the goreleaser action. While this doesn't directly allow code execution, a malicious actor could craft a pull request body containing malicious markdown content that could potentially affect the goreleaser process or lead to vulnerabilities in the generated release artifacts."
+  },
+  {
+    "workflow_path": "https://github.com/microsoft/AzureTipsAndTricks/blob/HEAD/.github/workflows/create-pr.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.pull_request.title in a git commit command without proper sanitization. A malicious actor could submit a pull request with a crafted title containing malicious code, leading to arbitrary command execution during the commit operation in the private repository. This could allow modification of the private repository content and potential exfiltration of secrets like PRIVATE_REPO_PAT."
+  },
+  {
+    "workflow_path": "https://github.com/microsoft/coe-starter-kit/blob/HEAD/.github/workflows/sync-to-azdo.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.issue.milestone.title to construct shell commands without proper sanitization in multiple steps. A malicious actor could create a milestone with a title containing malicious code, leading to arbitrary command execution on the runner. This could potentially allow exfiltration of secrets like ADO_PERSONAL_ACCESS_TOKEN and GH_PERSONAL_ACCESS_TOKEN."
+  },
+  {
+    "workflow_path": "https://github.com/microsoft/kiota/blob/HEAD/.github/workflows/project-auto-add.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "medium",
+    "exploit_info": "The workflow uses github.event.issue.body to extract the SDK language. While this doesn't directly allow code execution, a malicious actor could craft an issue body containing special characters or unexpected formatting that could lead to incorrect language parsing or potential issues in subsequent workflow steps."
+  },
+  {
+    "workflow_path": "https://github.com/microsoft/powercat-creator-kit/blob/HEAD/.github/workflows/sync-to-azdo.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.issue.milestone.title to construct shell commands without proper sanitization in multiple steps. A malicious actor could create a milestone with a title containing malicious code, leading to arbitrary command execution on the runner. This could potentially allow exfiltration of secrets like ADO_PERSONAL_ACCESS_TOKEN and GH_PERSONAL_ACCESS_TOKEN."
+  },
+  {
+    "workflow_path": "https://github.com/microsoft/powercat-automation-kit/blob/HEAD/.github/workflows/SyncIssueWithAzDo.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.issue.milestone.title to construct shell commands without proper sanitization in multiple steps. A malicious actor could create a milestone with a title containing malicious code, leading to arbitrary command execution on the runner. This could potentially allow exfiltration of secrets like ADO_PERSONAL_ACCESS_TOKEN and GH_PERSONAL_ACCESS_TOKEN."
+  },
+  {
+    "workflow_path": "https://github.com/microsoft/powercat-business-approvals-kit/blob/HEAD/.github/workflows/SyncIssueWithAzDo.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.issue.milestone.title to construct shell commands without proper sanitization in multiple steps. A malicious actor could create a milestone with a title containing malicious code, leading to arbitrary command execution on the runner. This could potentially allow exfiltration of secrets like ADO_PERSONAL_ACCESS_TOKEN and GH_PERSONAL_ACCESS_TOKEN."
+  },
+  {
+    "workflow_path": "https://github.com/microsoft/hackers-ground/blob/HEAD/.github/workflows/csc-challenge-submitted.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.issue.title and github.event.issue.body without proper sanitization in multiple steps, including passing them to a PowerShell script that interacts with external services. A malicious actor could create an issue with a crafted title or body containing malicious code, leading to arbitrary code execution on the runner. This could potentially allow exfiltration of secrets like GH_PAT, GITHUB_TOKEN, INSPECTORS, PAU_ON_CHALLENGE_SUBMITTED_URL, and CSC_DUE_DATE."
+  },
+  {
+    "workflow_path": "https://github.com/microsoft/hackers-ground/blob/HEAD/.github/workflows/csc-challenge-verified.yaml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.issue.title without proper sanitization in a PowerShell script. A malicious actor could create an issue with a crafted title containing malicious code, leading to arbitrary code execution on the runner. This could potentially allow exfiltration of secrets like GITHUB_TOKEN, PAU_ON_CHALLENGE_VERIFIED_URL, and DISCORD_WEBHOOK_URL."
+  },
+  {
+    "workflow_path": "https://github.com/microsoft/file-content-rs/blob/HEAD/.github/workflows/cargo_publish.yml",
+    "exploit_type": "Untrusted Input",
+    "exploit_severity": "high",
+    "exploit_info": "The workflow uses github.event.head_commit.message to determine whether to publish a package to Crates.io. A malicious actor could push a commit with a crafted message containing '[deploy]' and malicious code, leading to the execution of the malicious code and potential compromise of the package published to Crates.io. This could allow the attacker to distribute malicious code to users of the package."
+  }
+]

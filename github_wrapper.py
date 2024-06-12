@@ -58,7 +58,8 @@ class GHWrapper():
                     AuditLogger.error(f"GitHub GraphQL Query failed: {message}")
                     raise RuntimeError(f"GitHub GraphQL Query failed with error: {message}")
             else:
-                wait_time = reset_time - int(time.time())
+                current_time = int(time.time())
+                wait_time = max(reset_time - current_time, 0)
                 AuditLogger.info(f"Rate limit exceeded. Waiting for {wait_time} seconds.")
                 time.sleep(wait_time + 5)
 
@@ -150,5 +151,58 @@ class GHWrapper():
                 valid = True
         return valid
 
+    def get_workflow_authors(self, repo_name, workflow_path, limit=100):
+        def query_authors():
+            workflow_file_path = "/".join(workflow_path.split("/")[2:])
+            query = f'''
+            {{
+                repository(owner: "{repo_name.split('/')[0]}", name: "{repo_name.split('/')[1]}") {{
+                    defaultBranchRef {{
+                        target {{
+                            ... on Commit {{
+                                history(first: {limit}, path: "{workflow_file_path}") {{
+                                    edges {{
+                                        node {{
+                                            author {{
+                                                email
+                                                user {{
+                                                    login
+                                                }}
+                                            }}
+                                            committedDate
+                                        }}
+                                    }}
+                                }}
+                            }}
+                        }}
+                    }}
+                }}
+            }}
+            '''
+            response = self.call_graphql(query)
 
+            if response.get('errors') is None:
+                repository = response['data']['repository']
+                if repository and repository['defaultBranchRef'] and repository['defaultBranchRef']['target']:
+                    edges = repository['defaultBranchRef']['target']['history']['edges']
+                    authors = {}
+                    for edge in edges:
+                        author = edge['node']['author']
+                        email = author["email"]
+                        login = author['user']['login'] if author['user'] else ""
+                        committed_date = edge['node']['committedDate']
+                        if email not in authors or committed_date > authors[email]["committed_date"]:
+                            authors[email] = {"email": email, "login": login, "committed_date": committed_date}
+                    return sorted(authors.values(), key=lambda x: x["committed_date"], reverse=True)[:10]
+            return None
 
+        authors = query_authors()
+
+        if authors is None:
+            AuditLogger.warning(f"Repository '{repo_name}' or branches 'main' and 'master' not found.")
+            return []
+        if not authors:
+            AuditLogger.error("Failed to retrieve workflow authors.")
+            return []
+
+        return authors

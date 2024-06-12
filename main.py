@@ -91,21 +91,9 @@ def main():
             "repo_vulnerabilities": repo_vulnerabilities
         })
 
-        # org_data = {
-        #     "organization": target_input,
-        #     "organization_url": f"https://github.com/{target_input}",
-        #     "repos": repo_vulnerabilities
-        # }
-        # print(org_data)
-
-    # for repo_dict in repos:
-    #     AuditLogger.info(f"> Starting audit of {repo_dict}")
-    #     repo_workflows = repos[repo_dict]
-    #     repo_analysis(repo_workflows)
-
-    AuditLogger.info(f"> Checking for supply chain attacks.")
-    vulnerable_users = action_audit()
-    entity_data['vulnerable_users'] = vulnerable_users
+    # AuditLogger.info(f"> Checking for supply chain attacks.")
+    # vulnerable_users = action_audit()
+    # entity_data['vulnerable_users'] = vulnerable_users
 
     write_to_json(entity_data)
 

@@ -1,0 +1,421 @@
+entity_name,entity_url,workflow_name,workflow_path,vulnerability_name,vulnerability_info
+stellar,https://github.com/stellar,build-and-test.yml,https://github.com/stellar/supercluster/blob/master/.github/workflows/build-and-test.yml,Kubernetes Resource Access,Usage of $KUBECONFIG found.
+hazelcast,https://github.com/hazelcast,test-and-release.yaml,https://github.com/hazelcast/hazelcast-platform-operator/blob/master/.github/workflows/test-and-release.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+mesosphere,https://github.com/mesosphere,checks.yml,https://github.com/mesosphere/dynamic-credential-provider/blob/master/.github/workflows/checks.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+thunderbird,https://github.com/thunderbird,ci-tests.yml,https://github.com/thunderbird/addons-server/blob/master/.github/workflows/ci-tests.yml,External Resource Access,Usage of mysql://root:verysecurepw@host.docker.internal:3306/test_olympia found.
+GSA,https://github.com/GSA,checks.yml,https://github.com/GSA/notifications-api/blob/master/.github/workflows/checks.yml,External Resource Access,Usage of postgresql://user:password@localhost:5432/test_notification_api found.
+GSA,https://github.com/GSA,daily_checks.yml,https://github.com/GSA/notifications-api/blob/master/.github/workflows/daily_checks.yml,External Resource Access,Usage of postgresql://user:password@localhost:5432/test_notification_api found.
+GSA,https://github.com/GSA,checks.yml,https://github.com/GSA/notifications-admin/blob/master/.github/workflows/checks.yml,External Resource Access,Usage of postgresql://user:password@localhost:5432/test_notification_api found.
+alteryx,https://github.com/alteryx,postgres_test.yaml,https://github.com/alteryx/featuretools_sql/blob/master/.github/workflows/postgres_test.yaml,External Resource Access,Usage of postgresql://postgres:postgres@localhost:5432/postgres found.
+cnodejs,https://github.com/cnodejs,nodejs.yml,https://github.com/cnodejs/tegg-cnode/blob/master/.github/workflows/nodejs.yml,External Resource Access,Usage of mongodb://root:root@127.0.0.1:27017/admin found.
+TykTechnologies,https://github.com/TykTechnologies,run-tests.yaml,https://github.com/TykTechnologies/tyk-charts/blob/master/.github/workflows/run-tests.yaml,External Resource Access,Usage of mongodb://root:$MONGODB_ROOT_PASSWORD@mongo-mongodb.${{ env.TYK_STACK_NS }}.svc:27017/tyk_analytics found.
+newrelic,https://github.com/newrelic,ci.yaml,https://github.com/newrelic/newrelic-infra-operator/blob/master/.github/workflows/ci.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+newrelic,https://github.com/newrelic,ci.yaml,https://github.com/newrelic/newrelic-k8s-metrics-adapter/blob/master/.github/workflows/ci.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+launchbadge,https://github.com/launchbadge,examples.yml,https://github.com/launchbadge/sqlx/blob/master/.github/workflows/examples.yml,External Resource Access,Usage of mysql://root:password@localhost:3306/todos found.
+launchbadge,https://github.com/launchbadge,sqlx.yml,https://github.com/launchbadge/sqlx/blob/master/.github/workflows/sqlx.yml,External Resource Access,Usage of mysql://root:password@localhost:3306/sqlx found.
+alphagov,https://github.com/alphagov,pact-verify.yml,https://github.com/alphagov/asset-manager/blob/master/.github/workflows/pact-verify.yml,External Resource Access,"Usage of mongodb://localhost:27017/test-db""
+      RAILS_ENV: test
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: alphagov/asset found."
+alphagov,https://github.com/alphagov,test_on_pr.yml,https://github.com/alphagov/paas-billing/blob/master/.github/workflows/test_on_pr.yml,External Resource Access,Usage of postgresql://postgres:secret@localhost:5432/test found.
+alphagov,https://github.com/alphagov,tests.yaml,https://github.com/alphagov/paas-accounts/blob/master/.github/workflows/tests.yaml,External Resource Access,Usage of postgresql://jeff:secret@localhost:5432/test found.
+camunda,https://github.com/camunda,test-regression.yaml,https://github.com/camunda/camunda-platform-helm/blob/master/.github/workflows/test-regression.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+micro,https://github.com/micro,tests.yml,https://github.com/micro/services/blob/master/.github/workflows/tests.yml,External Resource Access,Usage of postgresql://postgres:postgres@postgres:5432/postgres found.
+splunk,https://github.com/splunk,uffizzi-preview.yaml,https://github.com/splunk/backstage/blob/master/.github/workflows/uffizzi-preview.yaml,Kubernetes Resource Access,"Usage of kubectl get all --kubeconfig ./kubeconfig, kubectl get namespace --kubeconfig [PATH_TO_KUBECONFIG]`, kubectl apply -f manifests.rendered.yml --kubeconfig ./kubeconfig, kubectl get ingress backstage --kubeconfig kubeconfig, kubectl patch deployment backstage --kubeconfig kubeconfig found."
+percona,https://github.com/percona,ci.yml,https://github.com/percona/dbaas-controller/blob/master/.github/workflows/ci.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+ovh,https://github.com/ovh,tests.yml,https://github.com/ovh/celery-director/blob/master/.github/workflows/tests.yml,External Resource Access,Usage of postgresql://director:director@localhost:5432/tests found.
+mitre,https://github.com/mitre,test.yaml,https://github.com/mitre/saf-site-backend/blob/master/.github/workflows/test.yaml,External Resource Access,Usage of postgresql://${{ secrets.DATABASE_USERNAME }}:${{ secrets.DATABASE_PASSWORD }}@localhost:5432/${{ secrets.DATABASE_NAME } found.
+18F,https://github.com/18F,api-test-deploy.yml,https://github.com/18F/aocourts-api/blob/master/.github/workflows/api-test-deploy.yml,External Resource Access,Usage of postgresql://postgres:postgres@localhost:5432/postgres found.
+18F,https://github.com/18F,run-api-tests-action.yml,https://github.com/18F/aocourts-api/blob/master/.github/workflows/run-api-tests-action.yml,External Resource Access,Usage of postgresql://postgres:postgres@localhost:5432/postgres found.
+vimeo,https://github.com/vimeo,main.yml,https://github.com/vimeo/tusd/blob/master/.github/workflows/main.yml,Kubernetes Resource Access,Usage of ${{ secrets.KUBECONFIG }} found.
+input-output-hk,https://github.com/input-output-hk,continuous-integration-e2e.yaml,https://github.com/input-output-hk/cardano-js-sdk/blob/master/.github/workflows/continuous-integration-e2e.yaml,External Resource Access,"Usage of postgresql://postgres:doNoUseThisSecret!@localhost:5435/stake_pool_test, postgresql://postgres:doNoUseThisSecret!@localhost:5435/cexplorer, postgresql://postgres:doNoUseThisSecret!@localhost:5435/stake_pool found."
+input-output-hk,https://github.com/input-output-hk,ci.yml,https://github.com/input-output-hk/adrestia-multisig-coordination/blob/master/.github/workflows/ci.yml,External Resource Access,Usage of postgresql://postgres:notForProduction!@127.0.0.1:5432/mcs found.
+input-output-hk,https://github.com/input-output-hk,ci.yml,https://github.com/input-output-hk/casbin-pgx-adapter/blob/master/.github/workflows/ci.yml,External Resource Access,Usage of postgresql://postgres:postgres@127.0.0.1:5432/postgres found.
+input-output-hk,https://github.com/input-output-hk,ci.yml,https://github.com/input-output-hk/cardano-rosetta/blob/master/.github/workflows/ci.yml,External Resource Access,Usage of postgresql://postgres:notForProduction!@127.0.0.1:5432/mainnet found.
+cloudposse,https://github.com/cloudposse,test-positive.yml,https://github.com/cloudposse/github-action-deploy-helmfile/blob/master/.github/workflows/test-positive.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+seatgeek,https://github.com/seatgeek,ide-integration-tests.yml,https://github.com/seatgeek/gitpod/blob/master/.github/workflows/ide-integration-tests.yml,Cloud Resource Access,"Usage of gcloud auth activate-service-account --key-file ""${PREVIEW_ENV_DEV_SA_KEY_PATH}"" found."
+seatgeek,https://github.com/seatgeek,preview-env-check-regressions.yml,https://github.com/seatgeek/gitpod/blob/master/.github/workflows/preview-env-check-regressions.yml,Cloud Resource Access,"Usage of gcloud auth activate-service-account --key-file ""${PREVIEW_ENV_DEV_SA_KEY_PATH}"" found."
+seatgeek,https://github.com/seatgeek,preview-env-gc.yml,https://github.com/seatgeek/gitpod/blob/master/.github/workflows/preview-env-gc.yml,Cloud Resource Access,"Usage of gcloud auth activate-service-account --key-file ""${PREVIEW_ENV_DEV_SA_KEY_PATH}"" found."
+seatgeek,https://github.com/seatgeek,uffizzi-preview.yaml,https://github.com/seatgeek/backstage/blob/master/.github/workflows/uffizzi-preview.yaml,Kubernetes Resource Access,"Usage of kubectl get all --kubeconfig ./kubeconfig, kubectl get ingress backstage --kubeconfig kubeconfig, kubectl patch deployment backstage --kubeconfig kubeconfig, kubectl get namespace --kubeconfig [PATH_TO_KUBECONFIG]`, kubectl apply -f manifests.rendered.yml --kubeconfig ./kubeconfig found."
+nginxinc,https://github.com/nginxinc,kitchen.yml,https://github.com/nginxinc/docker-formula/blob/master/.github/workflows/kitchen.yml,Kubernetes Resource Access,Usage of KUBECONFIG: '$HOME/.kube/config' found.
+wso2,https://github.com/wso2,e2e-tests.yaml,https://github.com/wso2/choreo-keda-http-addon-fork/blob/master/.github/workflows/e2e-tests.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+lyft,https://github.com/lyft,android-ci.yml,https://github.com/lyft/maplibre-gl-native/blob/master/.github/workflows/android-ci.yml,Cloud Resource Access,Usage of gcloud auth activate-service-account --key-file secret.json found.
+lyft,https://github.com/lyft,android-release.yml,https://github.com/lyft/maplibre-gl-native/blob/master/.github/workflows/android-release.yml,Cloud Resource Access,Usage of gcloud auth activate-service-account --key-file secret.json found.
+neo4j,https://github.com/neo4j,tests.yml,https://github.com/neo4j/helm-charts/blob/master/.github/workflows/tests.yml,Kubernetes Resource Access,Usage of $KUBECONFIG found.
+puppetlabs,https://github.com/puppetlabs,ci.yml,https://github.com/puppetlabs/puppetlabs-lvm/blob/master/.github/workflows/ci.yml,Cloud Resource Access,"Usage of gcloud auth activate-service-account --key-file creds.json"" found."
+puppetlabs,https://github.com/puppetlabs,nightly.yml,https://github.com/puppetlabs/puppetlabs-lvm/blob/master/.github/workflows/nightly.yml,Cloud Resource Access,"Usage of gcloud auth activate-service-account --key-file creds.json"" found."
+puppetlabs,https://github.com/puppetlabs,ci.yml,https://github.com/puppetlabs/puppetlabs-sqlserver/blob/master/.github/workflows/ci.yml,Cloud Resource Access,"Usage of gcloud auth activate-service-account --key-file C:\\creds.json"" found."
+puppetlabs,https://github.com/puppetlabs,nightly.yml,https://github.com/puppetlabs/puppetlabs-sqlserver/blob/master/.github/workflows/nightly.yml,Cloud Resource Access,"Usage of gcloud auth activate-service-account --key-file C:\\creds.json"" found."
+puppetlabs,https://github.com/puppetlabs,ci.yml,https://github.com/puppetlabs/puppetlabs-satellite_pe_tools/blob/master/.github/workflows/ci.yml,Cloud Resource Access,"Usage of gcloud auth activate-service-account --key-file creds.json"" found."
+puppetlabs,https://github.com/puppetlabs,nightly.yml,https://github.com/puppetlabs/puppetlabs-satellite_pe_tools/blob/master/.github/workflows/nightly.yml,Cloud Resource Access,"Usage of gcloud auth activate-service-account --key-file creds.json"" found."
+puppetlabs,https://github.com/puppetlabs,ci.yaml,https://github.com/puppetlabs/relay-core/blob/master/.github/workflows/ci.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+puppetlabs,https://github.com/puppetlabs,ci.yaml,https://github.com/puppetlabs/leg/blob/master/.github/workflows/ci.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+puppetlabs,https://github.com/puppetlabs,ci.yaml,https://github.com/puppetlabs/pvpool/blob/master/.github/workflows/ci.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+puppetlabs,https://github.com/puppetlabs,relay-node-tainter-ci.yaml,https://github.com/puppetlabs/relay-services/blob/master/.github/workflows/relay-node-tainter-ci.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+jupyterhub,https://github.com/jupyterhub,test.yml,https://github.com/jupyterhub/jupyterhub/blob/master/.github/workflows/test.yml,External Resource Access,Usage of postgresql://test_user:hub%5Btest%2F%3A%3F@127.0.0.1:5432/jupyterhub found.
+jupyterhub,https://github.com/jupyterhub,readme_example.yml,https://github.com/jupyterhub/action-k3s-helm/blob/master/.github/workflows/readme_example.yml,Kubernetes Resource Access,Usage of $KUBECONFIG found.
+dolthub,https://github.com/dolthub,k8s-benchmark-latency.yaml,https://github.com/dolthub/dolt/blob/master/.github/workflows/k8s-benchmark-latency.yaml,Kubernetes Resource Access,"Usage of KUBECONFIG: ""./kubeconfig"" found."
+dolthub,https://github.com/dolthub,k8s-dolt-profile.yaml,https://github.com/dolthub/dolt/blob/master/.github/workflows/k8s-dolt-profile.yaml,Kubernetes Resource Access,"Usage of KUBECONFIG: ""./kubeconfig"" found."
+dolthub,https://github.com/dolthub,k8s-fuzzer.yaml,https://github.com/dolthub/dolt/blob/master/.github/workflows/k8s-fuzzer.yaml,Kubernetes Resource Access,"Usage of KUBECONFIG: ""./kubeconfig"" found."
+dolthub,https://github.com/dolthub,k8s-sql-correctness.yaml,https://github.com/dolthub/dolt/blob/master/.github/workflows/k8s-sql-correctness.yaml,Kubernetes Resource Access,"Usage of KUBECONFIG: ""./kubeconfig"" found."
+dolthub,https://github.com/dolthub,k8s-benchmark-latency.yaml,https://github.com/dolthub/doltgresql/blob/master/.github/workflows/k8s-benchmark-latency.yaml,Kubernetes Resource Access,"Usage of KUBECONFIG: ""./kubeconfig"" found."
+dolthub,https://github.com/dolthub,k8s-sql-correctness.yaml,https://github.com/dolthub/doltgresql/blob/master/.github/workflows/k8s-sql-correctness.yaml,Kubernetes Resource Access,"Usage of KUBECONFIG: ""./kubeconfig"" found."
+wikimedia,https://github.com/wikimedia,ci.yml,https://github.com/wikimedia/ws-export/blob/master/.github/workflows/ci.yml,External Resource Access,Usage of mysql://root:testpwd@127.0.0.1:3306/wsexport_test found.
+AliyunContainerService,https://github.com/AliyunContainerService,go-presubmit.yml,https://github.com/AliyunContainerService/registration-operator/blob/master/.github/workflows/go-presubmit.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+AliyunContainerService,https://github.com/AliyunContainerService,go-presubmit.yml,https://github.com/AliyunContainerService/registration/blob/master/.github/workflows/go-presubmit.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+AliyunContainerService,https://github.com/AliyunContainerService,go-presubmit.yml,https://github.com/AliyunContainerService/work/blob/master/.github/workflows/go-presubmit.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+AliyunContainerService,https://github.com/AliyunContainerService,ci-build.yaml,https://github.com/AliyunContainerService/argo-workflows/blob/master/.github/workflows/ci-build.yaml,Kubernetes Resource Access,"Usage of $KUBECONFIG, KUBECONFIG:  found."
+heyxyz,https://github.com/heyxyz,ci.yml,https://github.com/heyxyz/hey/blob/master/.github/workflows/ci.yml,External Resource Access,Usage of postgresql://postgres:postgres@localhost:5432/postgres found.
+discord,https://github.com/discord,sqlx.yml,https://github.com/discord/sqlx/blob/master/.github/workflows/sqlx.yml,External Resource Access,Usage of mysql://root:password@localhost:3306/sqlx found.
+keystonejs,https://github.com/keystonejs,tests_ci.yml,https://github.com/keystonejs/keystone/blob/master/.github/workflows/tests_ci.yml,External Resource Access,Usage of mysql://root:testpass@localhost:3306/test_db found.
+weaveworks,https://github.com/weaveworks,acceptance-test.yaml,https://github.com/weaveworks/weave-gitops-enterprise/blob/master/.github/workflows/acceptance-test.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+weaveworks,https://github.com/weaveworks,helm-profiles-test.yaml,https://github.com/weaveworks/profiles-catalog/blob/master/.github/workflows/helm-profiles-test.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+weaveworks,https://github.com/weaveworks,e2e-arm64.yaml,https://github.com/weaveworks/weave-assured-flux2/blob/master/.github/workflows/e2e-arm64.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+weaveworks,https://github.com/weaveworks,e2e.yaml,https://github.com/weaveworks/weave-assured-flux2/blob/master/.github/workflows/e2e.yaml,External Resource Access,"Usage of ssh://git@github.com/stefanprodan/podinfo
+          /tmp/flux create secret git git-https-test \
+            --url https://github.com/stefanprodan/podinfo \
+            --username=test --password=test
+          /tmp/flux create secret helm helm-test \
+            --username=test --password=test
+      - name: flux create source git
+        run: |
+          /tmp/flux create source git podinfo \
+            --url https://github.com/stefanprodan/podinfo  \
+            --tag-semver="">=6.3.5""
+      - name: flux create source git export apply
+        run: |
+          /tmp/flux create source git podinfo-export \
+            --url https://github.com/stefanprodan/podinfo  \
+            --tag-semver="">=6.3.5"" \
+            --export | kubectl apply -f -
+          /tmp/flux delete source git podinfo-export --silent
+      - name: flux get sources git
+        run: |
+          /tmp/flux get sources git
+      - name: flux get sources git --all-namespaces
+        run: |
+          /tmp/flux get sources git --all-namespaces
+      - name: flux create kustomization
+        run: |
+          /tmp/flux create kustomization podinfo \
+            --source=podinfo \
+            --path=""./deploy/overlays/dev"" \
+            --prune=true \
+            --interval=5m \
+            --health-check=""Deployment/frontend.dev"" \
+            --health-check=""Deployment/backend.dev"" \
+            --health-check-timeout=3m
+      - name: flux trace
+        run: |
+          /tmp/flux trace frontend \
+            --kind=deployment \
+            --api-version=apps/v1 \
+            --namespace=dev
+      - name: flux reconcile kustomization --with-source
+        run: |
+          /tmp/flux reconcile kustomization podinfo --with-source
+      - name: flux get kustomizations
+        run: |
+          /tmp/flux get kustomizations
+      - name: flux get kustomizations --all-namespaces
+        run: |
+          /tmp/flux get kustomizations --all-namespaces
+      - name: flux suspend kustomization
+        run: |
+          /tmp/flux suspend kustomization podinfo
+      - name: flux resume kustomization
+        run: |
+          /tmp/flux resume kustomization podinfo
+      - name: flux export
+        run: |
+          /tmp/flux export source git --all
+          /tmp/flux export kustomization --all
+      - name: flux delete kustomization
+        run: |
+          /tmp/flux delete kustomization podinfo --silent
+      - name: flux create source helm
+        run: |
+          /tmp/flux create source helm podinfo \
+            --url https://stefanprodan.github.io/podinfo
+      - name: flux create helmrelease --source=HelmRepository/podinfo
+        run: |
+          /tmp/flux create hr podinfo-helm \
+            --target-namespace=default \
+            --source=HelmRepository/podinfo.flux-system \
+            --chart=podinfo \
+            --chart-version="">6.0.0 <7.0.0""
+      - name: flux create helmrelease --source=GitRepository/podinfo
+        run: |
+          /tmp/flux create hr podinfo-git \
+            --target-namespace=default \
+            --source=GitRepository/podinfo \
+            --chart=./charts/podinfo
+      - name: flux reconcile helmrelease --with-source
+        run: |
+          /tmp/flux reconcile helmrelease podinfo-git --with-source
+      - name: flux get helmreleases
+        run: |
+          /tmp/flux get helmreleases
+      - name: flux get helmreleases --all-namespaces
+        run: |
+          /tmp/flux get helmreleases --all-namespaces
+      - name: flux export helmrelease
+        run: |
+          /tmp/flux export hr --all
+      - name: flux delete helmrelease podinfo-helm
+        run: |
+          /tmp/flux delete hr podinfo-helm --silent
+      - name: flux delete helmrelease podinfo-git
+        run: |
+          /tmp/flux delete hr podinfo-git --silent
+      - name: flux delete source helm
+        run: |
+          /tmp/flux delete source helm podinfo --silent
+      - name: flux delete source git
+        run: |
+          /tmp/flux delete source git podinfo --silent
+      - name: flux oci artifacts
+        run: |
+          /tmp/flux push artifact oci://localhost:5000/fluxcd/flux:${{ github.sha }} \
+            --path=""./manifests"" \
+            --source=""${{ github.repositoryUrl }}"" \
+            --revision=""${{ github.ref }}@sha1:${{ github.sha } found."
+weaveworks,https://github.com/weaveworks,e2e.yaml,https://github.com/weaveworks/weave-assured-source-controller/blob/master/.github/workflows/e2e.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+ossrs,https://github.com/ossrs,kubernetes.yml,https://github.com/ossrs/srs-k8s-template/blob/master/.github/workflows/kubernetes.yml,Kubernetes Resource Access,"Usage of KUBECONFIG: , ${{ secrets.KUBECONFIG }},  secrets.KUBECONFIG
+        , $KUBECONFIG found."
+ossrs,https://github.com/ossrs,release.yml,https://github.com/ossrs/srs-las/blob/master/.github/workflows/release.yml,Kubernetes Resource Access,Usage of $KUBECONFIG found.
+ossrs,https://github.com/ossrs,release.yml,https://github.com/ossrs/srs-sctp/blob/master/.github/workflows/release.yml,Kubernetes Resource Access,Usage of $KUBECONFIG found.
+ossrs,https://github.com/ossrs,release.yml,https://github.com/ossrs/srs-g711/blob/master/.github/workflows/release.yml,Kubernetes Resource Access,Usage of $KUBECONFIG found.
+spring-cloud,https://github.com/spring-cloud,housekeeping.yml,https://github.com/spring-cloud/stream-applications/blob/master/.github/workflows/housekeeping.yml,Kubernetes Resource Access,Usage of $KUBECONFIG found.
+spring-cloud,https://github.com/spring-cloud,recreate-runners.yml,https://github.com/spring-cloud/stream-applications/blob/master/.github/workflows/recreate-runners.yml,Kubernetes Resource Access,Usage of $KUBECONFIG found.
+invertase,https://github.com/invertase,health-metrics-presubmit.yml,https://github.com/invertase/firebase-ios-sdk/blob/master/.github/workflows/health-metrics-presubmit.yml,Cloud Resource Access,Usage of gcloud auth activate-service-account --key-file metrics-access.json found.
+invertase,https://github.com/invertase,health-metrics-release.yml,https://github.com/invertase/firebase-ios-sdk/blob/master/.github/workflows/health-metrics-release.yml,Cloud Resource Access,Usage of gcloud auth activate-service-account --key-file service_account.json found.
+invertase,https://github.com/invertase,health-metrics-presubmit.yml,https://github.com/invertase/firebase-ios-sdk-frameworks-fix/blob/master/.github/workflows/health-metrics-presubmit.yml,Cloud Resource Access,Usage of gcloud auth activate-service-account --key-file metrics-access.json found.
+invertase,https://github.com/invertase,health-metrics-release.yml,https://github.com/invertase/firebase-ios-sdk-frameworks-fix/blob/master/.github/workflows/health-metrics-release.yml,Cloud Resource Access,Usage of gcloud auth activate-service-account --key-file service_account.json found.
+DataDog,https://github.com/DataDog,build.yml,https://github.com/DataDog/terraform-provider-vault/blob/master/.github/workflows/build.yml,External Resource Access,Usage of mongodb://root:mongodb@mongo:27017/admin found.
+DataDog,https://github.com/DataDog,e2e-tests.yml,https://github.com/DataDog/opentelemetry-collector-contrib/blob/master/.github/workflows/e2e-tests.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+DataDog,https://github.com/DataDog,run-k8s-tests-on-sev.yaml,https://github.com/DataDog/kata-containers/blob/master/.github/workflows/run-k8s-tests-on-sev.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+DataDog,https://github.com/DataDog,run-k8s-tests-on-snp.yaml,https://github.com/DataDog/kata-containers/blob/master/.github/workflows/run-k8s-tests-on-snp.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+DataDog,https://github.com/DataDog,system-test.yml,https://github.com/DataDog/KubeHound/blob/master/.github/workflows/system-test.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+openshift,https://github.com/openshift,test.yml,https://github.com/openshift/whereabouts-cni/blob/master/.github/workflows/test.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+openshift,https://github.com/openshift,e2e.yaml,https://github.com/openshift/cluster-api-provider-kubevirt/blob/master/.github/workflows/e2e.yaml,Kubernetes Resource Access,"Usage of ${{secrets.KUBECONFIG}}, $KUBECONFIG, KUBECONFIG:  found."
+openshift,https://github.com/openshift,tests.yaml,https://github.com/openshift/cluster-relocation-operator/blob/master/.github/workflows/tests.yaml,Kubernetes Resource Access,"Usage of KUBECONFIG: ""/home/gh-action/.kcli/clusters/ocp-test/auth/kubeconfig"" found."
+h2oai,https://github.com/h2oai,release-operator.yml,https://github.com/h2oai/h2o-kubernetes/blob/master/.github/workflows/release-operator.yml,Kubernetes Resource Access,Usage of $KUBECONFIG found.
+h2oai,https://github.com/h2oai,rust.yml,https://github.com/h2oai/h2o-kubernetes/blob/master/.github/workflows/rust.yml,Kubernetes Resource Access,Usage of $KUBECONFIG found.
+nats-io,https://github.com/nats-io,cgroup.yaml,https://github.com/nats-io/k3s/blob/master/.github/workflows/cgroup.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+hyperledger,https://github.com/hyperledger,aws_besu_deploy.yaml,https://github.com/hyperledger/bevel/blob/master/.github/workflows/aws_besu_deploy.yaml,Kubernetes Resource Access,"Usage of KUBECONFIG: ""${{ secrets.ENCODED_KUBECONFIG }}"" found."
+hyperledger,https://github.com/hyperledger,aws_corda_ent_deploy.yaml,https://github.com/hyperledger/bevel/blob/master/.github/workflows/aws_corda_ent_deploy.yaml,Kubernetes Resource Access,"Usage of KUBECONFIG: ""${{ secrets.ENCODED_KUBECONFIG }}"" found."
+hyperledger,https://github.com/hyperledger,aws_hyperledger_fabric_deploy.yaml,https://github.com/hyperledger/bevel/blob/master/.github/workflows/aws_hyperledger_fabric_deploy.yaml,Kubernetes Resource Access,"Usage of KUBECONFIG: ""${{ secrets.ENCODED_KUBECONFIG }}"" found."
+hyperledger,https://github.com/hyperledger,aws_quorum_deploy.yaml,https://github.com/hyperledger/bevel/blob/master/.github/workflows/aws_quorum_deploy.yaml,Kubernetes Resource Access,"Usage of KUBECONFIG: ""${{ secrets.ENCODED_KUBECONFIG }}"" found."
+hyperledger,https://github.com/hyperledger,gcp_deploy.yml,https://github.com/hyperledger/bevel/blob/master/.github/workflows/gcp_deploy.yml,Kubernetes Resource Access,Usage of $KUBECONFIG found.
+hyperledger,https://github.com/hyperledger,mediator.pr.yml,https://github.com/hyperledger/aries-vcx/blob/master/.github/workflows/mediator.pr.yml,External Resource Access,Usage of mysql://admin:github.ci.password.no.prod@localhost:3326/mediator found.
+cockroachdb,https://github.com/cockroachdb,go-tests.yaml,https://github.com/cockroachdb/replicator/blob/master/.github/workflows/go-tests.yaml,External Resource Access,"Usage of postgresql://root@127.0.0.1:5400/defaultdb?sslmode=disable""
+            target: target-cockroachdb-v23.2
+            targetConn: ""postgresql://root@127.0.0.1:5401/defaultdb, mysql://root:SoupOrSecret@127.0.0.1:3306/mysql, postgresql://root@127.0.0.1:5400/defaultdb?sslmode=disable""
+          - cockroachdb: v23.2
+            source: source-cockroachdb-v21.2
+            sourceConn: ""postgresql://root@127.0.0.1:5400/defaultdb, postgresql://root@127.0.0.1:5400/defaultdb?sslmode=disable""
+          - cockroachdb: v23.2
+            source: source-cockroachdb-v20.2
+            sourceConn: ""postgresql://root@127.0.0.1:5400/defaultdb found."
+cockroachdb,https://github.com/cockroachdb,test-mongodb.yaml,https://github.com/cockroachdb/prisma-examples/blob/master/.github/workflows/test-mongodb.yaml,External Resource Access,Usage of mongodb://root:prisma@localhost:27017/prisma found.
+cockroachdb,https://github.com/cockroachdb,build.yml,https://github.com/cockroachdb/efcore.pg.cockroach/blob/master/.github/workflows/build.yml,External Resource Access,"Usage of postgresql://root@127.0.0.1:26257/defaultdb?sslcert=certs%2Fclient.root.crt&sslkey=certs%2Fclient.root.key&sslmode=verify-full&sslrootcert=certs%2Fca.crt""
+          cockroach sql --certs-dir=certs -e ""SET CLUSTER SETTING sql.defaults.default_int_size = 4;"" --url=""postgresql://root@127.0.0.1:26257/defaultdb found."
+cockroachdb,https://github.com/cockroachdb,e2e-tests.yml,https://github.com/cockroachdb/opentelemetry-collector-contrib/blob/master/.github/workflows/e2e-tests.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+heroku,https://github.com/heroku,ci.yaml,https://github.com/heroku/riff-node-function-invoker/blob/master/.github/workflows/ci.yaml,Cloud Resource Access,Usage of gcloud auth activate-service-account --key-file <(echo found.
+futurice,https://github.com/futurice,ci.yml,https://github.com/futurice/futuLog/blob/master/.github/workflows/ci.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+atlassian,https://github.com/atlassian,openshift.yaml,https://github.com/atlassian/data-center-helm-charts/blob/master/.github/workflows/openshift.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+ClickHouse,https://github.com/ClickHouse,e2e-tests.yml,https://github.com/ClickHouse/opentelemetry-collector-contrib/blob/master/.github/workflows/e2e-tests.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+composer,https://github.com/composer,continuous-integration.yml,https://github.com/composer/packagist/blob/master/.github/workflows/continuous-integration.yml,External Resource Access,Usage of mysql://root:root@127.0.0.1:3306/packagist found.
+composer,https://github.com/composer,phpstan.yml,https://github.com/composer/packagist/blob/master/.github/workflows/phpstan.yml,External Resource Access,Usage of mysql://root:root@127.0.0.1:3306/packagist found.
+RocketChat,https://github.com/RocketChat,ci-test-e2e.yml,https://github.com/RocketChat/Rocket.Chat/blob/master/.github/workflows/ci-test-e2e.yml,External Resource Access,"Usage of mongodb://localhost:27017/rocketchat?replicaSet=rs0&directConnection=true
+  TOOL_NODE_FLAGS: ${{ vars.TOOL_NODE_FLAGS }}
+  LOWERCASE_REPOSITORY: ${{ inputs.lowercase-repo }}
+  DOCKER_TAG: ${{ inputs.gh-docker-tag }}
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    env:
+      RC_DOCKERFILE: ${{ matrix.mongodb-version == '6.0' && inputs.rc-dockerfile-alpine || inputs.rc-dockerfile }}
+      RC_DOCKER_TAG: ${{ matrix.mongodb-version == '6.0' && inputs.rc-docker-tag-alpine || inputs.rc-docker-tag }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        mongodb-version: ${{ fromJSON(inputs.mongodb-version) }}
+        shard: ${{ fromJSON(inputs.shard) }}
+
+    name: MongoDB ${{ matrix.mongodb-version }} (${{ matrix.shard }}/${{ inputs.total-shard }})${{ matrix.mongodb-version == '6.0' && ' - Alpine' || '' }}
+
+    steps:
+      - name: Login to GitHub Container Registry
+        if: (github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'release' || github.ref == 'refs/heads/develop')
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.CR_USER }}
+          password: ${{ secrets.CR_PAT }}
+
+      - name: Launch MongoDB
+        uses: supercharge/mongodb found."
+aquasecurity,https://github.com/aquasecurity,build.yaml,https://github.com/aquasecurity/kubectl-who-can/blob/master/.github/workflows/build.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+aquasecurity,https://github.com/aquasecurity,release.yaml,https://github.com/aquasecurity/kubectl-who-can/blob/master/.github/workflows/release.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+aquasecurity,https://github.com/aquasecurity,build.yaml,https://github.com/aquasecurity/starboard/blob/master/.github/workflows/build.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+aquasecurity,https://github.com/aquasecurity,release.yaml,https://github.com/aquasecurity/starboard/blob/master/.github/workflows/release.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+aquasecurity,https://github.com/aquasecurity,build.yaml,https://github.com/aquasecurity/trivy-operator/blob/master/.github/workflows/build.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+aquasecurity,https://github.com/aquasecurity,release.yaml,https://github.com/aquasecurity/trivy-operator/blob/master/.github/workflows/release.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+mdn,https://github.com/mdn,docker.yml,https://github.com/mdn/kuma/blob/master/.github/workflows/docker.yml,External Resource Access,Usage of postgresql://kuma:kuma@postgres:5432/developer_mozilla_org found.
+rancher,https://github.com/rancher,workflow.yml,https://github.com/rancher/linkerd2/blob/master/.github/workflows/workflow.yml,Kubernetes Resource Access,Usage of $KUBECONFIG found.
+rancher,https://github.com/rancher,local-up.yml,https://github.com/rancher/cri-dockerd/blob/master/.github/workflows/local-up.yml,Kubernetes Resource Access,Usage of $KUBECONFIG found.
+rancher,https://github.com/rancher,deploy_rodeos.yaml,https://github.com/rancher/barn/blob/master/.github/workflows/deploy_rodeos.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+rancher,https://github.com/rancher,main.yaml,https://github.com/rancher/hosted-providers-e2e/blob/master/.github/workflows/main.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+TryGhost,https://github.com/TryGhost,kitchen.yml,https://github.com/TryGhost/docker-formula/blob/master/.github/workflows/kitchen.yml,Kubernetes Resource Access,Usage of KUBECONFIG: '$HOME/.kube/config' found.
+Azure-Samples,https://github.com/Azure-Samples,2-deploy-workload.yml,https://github.com/Azure-Samples/ratings-nodejs-azd-akslza/blob/master/.github/workflows/2-deploy-workload.yml,External Resource Access,Usage of mongodb://${{ env.MONGO_DB_USER }}:${{ env.MongoDB_Password }}@ratings-mongodb.ratingsapp:27017/ratingsdb found.
+Azure-Samples,https://github.com/Azure-Samples,azd-up.yml,https://github.com/Azure-Samples/ratings-nodejs-azd-akslza/blob/master/.github/workflows/azd-up.yml,Kubernetes Resource Access,Usage of $KUBECONFIG found.
+Azure-Samples,https://github.com/Azure-Samples,build-vm.yaml,https://github.com/Azure-Samples/azure-edge-extensions-aio-environments/blob/master/.github/workflows/build-vm.yaml,Kubernetes Resource Access,Usage of kubectl get pods -A -v6 --kubeconfig C:\\scripts\\config; found.
+minio,https://github.com/minio,main.yml,https://github.com/minio/k8s-action/blob/master/.github/workflows/main.yml,Kubernetes Resource Access,Usage of ${{ secrets.KUBECONFIG found.
+minio,https://github.com/minio,deployer.yml,https://github.com/minio/mds/blob/master/.github/workflows/deployer.yml,Kubernetes Resource Access,Usage of kubectl --kubeconfig /tmp/kubecconfig -n mds delete pod $(kubectl --kubeconfig /tmp/kubecconfig found.
+prisma,https://github.com/prisma,test-mongodb.yaml,https://github.com/prisma/prisma-examples/blob/master/.github/workflows/test-mongodb.yaml,External Resource Access,Usage of mongodb://root:prisma@localhost:27017/prisma found.
+prisma,https://github.com/prisma,test.yml,https://github.com/prisma/quaint/blob/master/.github/workflows/test.yml,External Resource Access,"Usage of mysql://root:prisma@localhost:3306/prisma, mysql://root:prisma@localhost:3308/prisma, mysql://root:prisma@localhost:3307/prisma found."
+prisma,https://github.com/prisma,test-quaint.yml,https://github.com/prisma/prisma-engines/blob/master/.github/workflows/test-quaint.yml,External Resource Access,"Usage of mysql://root:prisma@localhost:3306/prisma, mysql://root:prisma@localhost:3308/prisma, mysql://root:prisma@localhost:3307/prisma found."
+prisma,https://github.com/prisma,test-schema-engine.yml,https://github.com/prisma/prisma-engines/blob/master/.github/workflows/test-schema-engine.yml,External Resource Access,"Usage of mysql://root:prisma@localhost:33807/test, postgresql://prisma@localhost:26257""
+          - name: sqlite
+            url: sqlite
+          - name: vitess_8_0
+            url: ""mysql://root:prisma@localhost:33807/test, mysql://root:prisma@localhost:33808/shadow found."
+prisma,https://github.com/prisma,test.yml,https://github.com/prisma/deployment-example-vercel/blob/master/.github/workflows/test.yml,External Resource Access,Usage of postgresql://postgres:postgres@localhost:5432/deployment found.
+prisma,https://github.com/prisma,test.yml,https://github.com/prisma/prisma-indexes/blob/master/.github/workflows/test.yml,External Resource Access,Usage of mysql://root:strongpassword@localhost:3306/users found.
+prisma,https://github.com/prisma,test.yml,https://github.com/prisma/extension-read-replicas/blob/master/.github/workflows/test.yml,External Resource Access,"Usage of postgresql://prisma:prisma@localhost:7432/test, postgresql://prisma:prisma@localhost:6432/test found."
+pingcap,https://github.com/pingcap,chaos-mesh.yml,https://github.com/pingcap/dm/blob/master/.github/workflows/chaos-mesh.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+adobe,https://github.com/adobe,e2e-test.yaml,https://github.com/adobe/koperator/blob/master/.github/workflows/e2e-test.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+encode,https://github.com/encode,test-suite.yml,https://github.com/encode/databases/blob/master/.github/workflows/test-suite.yml,External Resource Access,"Usage of postgresql://username:password@localhost:5432/testsuite, mysql://username:password@localhost:3306/testsuite found."
+encode,https://github.com/encode,test-suite.yml,https://github.com/encode/orm/blob/master/.github/workflows/test-suite.yml,External Resource Access,"Usage of postgresql://username:password@localhost:5432/testsuite, mysql://username:password@localhost:3306/testsuite found."
+getsentry,https://github.com/getsentry,deploy.yml,https://github.com/getsentry/sourcemaps.io/blob/master/.github/workflows/deploy.yml,Cloud Resource Access,Usage of gcloud auth activate-service-account --key-file service-key.json found.
+getsentry,https://github.com/getsentry,build.yml,https://github.com/getsentry/vanguard/blob/master/.github/workflows/build.yml,External Resource Access,Usage of postgresql://postgres:postgres@localhost:5432/postgres found.
+getsentry,https://github.com/getsentry,deploy.yml,https://github.com/getsentry/blues-stack/blob/master/.github/workflows/deploy.yml,External Resource Access,Usage of postgresql://postgres:postgres@localhost:5432/postgres found.
+IBM,https://github.com/IBM,ocp.yaml,https://github.com/IBM/ibm-common-service-operator/blob/master/.github/workflows/ocp.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+IBM,https://github.com/IBM,verify-workflow.yaml,https://github.com/IBM/automation-turbonomic/blob/master/.github/workflows/verify-workflow.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+firebase,https://github.com/firebase,health-metrics-presubmit.yml,https://github.com/firebase/firebase-ios-sdk/blob/master/.github/workflows/health-metrics-presubmit.yml,Cloud Resource Access,Usage of gcloud auth activate-service-account --key-file metrics-access.json found.
+Kong,https://github.com/Kong,k4k8s-deploy-ci.yml,https://github.com/Kong/kong-ansible-collection/blob/master/.github/workflows/k4k8s-deploy-ci.yml,Kubernetes Resource Access,"Usage of KUBECONFIG: ""/root/ansible_collections/kong/kong/kube/config"", KUBECONFIG: ""/var/lib/microshift/resources/kubeadmin/kubeconfig"", KUBECONFIG: ""$HOME/.kube/config"" found."
+Kong,https://github.com/Kong,k4k8s-deploy-dev-ci.yml,https://github.com/Kong/kong-ansible-collection/blob/master/.github/workflows/k4k8s-deploy-dev-ci.yml,Kubernetes Resource Access,"Usage of KUBECONFIG: ""/root/ansible_collections/kong/kong/kube/config"", KUBECONFIG: ""/var/lib/microshift/resources/kubeadmin/kubeconfig"", KUBECONFIG: ""$HOME/.kube/config"" found."
+Kong,https://github.com/Kong,k4k8s_cert_manager-ci.yml,https://github.com/Kong/kong-ansible-collection/blob/master/.github/workflows/k4k8s_cert_manager-ci.yml,Kubernetes Resource Access,"Usage of KUBECONFIG: ""/root/ansible_collections/kong/kong/kube/config"", KUBECONFIG: ""/var/lib/microshift/resources/kubeadmin/kubeconfig"", KUBECONFIG: ""$HOME/.kube/config"" found."
+Kong,https://github.com/Kong,k4k8s_cert_manager-dev-ci.yml,https://github.com/Kong/kong-ansible-collection/blob/master/.github/workflows/k4k8s_cert_manager-dev-ci.yml,Kubernetes Resource Access,"Usage of KUBECONFIG: ""/root/ansible_collections/kong/kong/kube/config"", KUBECONFIG: ""/var/lib/microshift/resources/kubeadmin/kubeconfig"", KUBECONFIG: ""$HOME/.kube/config"" found."
+Kong,https://github.com/Kong,k4k8s_external_dns-ci.yml,https://github.com/Kong/kong-ansible-collection/blob/master/.github/workflows/k4k8s_external_dns-ci.yml,Kubernetes Resource Access,"Usage of KUBECONFIG: ""/root/ansible_collections/kong/kong/kube/config"", KUBECONFIG: ""/var/lib/microshift/resources/kubeadmin/kubeconfig"", KUBECONFIG: ""$HOME/.kube/config"" found."
+Kong,https://github.com/Kong,k4k8s_external_dns-dev-ci.yml,https://github.com/Kong/kong-ansible-collection/blob/master/.github/workflows/k4k8s_external_dns-dev-ci.yml,Kubernetes Resource Access,"Usage of KUBECONFIG: ""/root/ansible_collections/kong/kong/kube/config"", KUBECONFIG: ""/var/lib/microshift/resources/kubeadmin/kubeconfig"", KUBECONFIG: ""$HOME/.kube/config"" found."
+GoogleChrome,https://github.com/GoogleChrome,ci.yml,https://github.com/GoogleChrome/lighthouse-ci/blob/master/.github/workflows/ci.yml,External Resource Access,Usage of mysql://root:mysql@127.0.0.1:33306/lighthouse_ci_test found.
+thoughtbot,https://github.com/thoughtbot,main.yml,https://github.com/thoughtbot/suspenders/blob/master/.github/workflows/main.yml,External Resource Access,Usage of postgresql://postgres:postgres@localhost:5432/dummy_app_test found.
+thoughtbot,https://github.com/thoughtbot,tests.yaml,https://github.com/thoughtbot/flightdeck/blob/master/.github/workflows/tests.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+Shopify,https://github.com/Shopify,quaint.yml,https://github.com/Shopify/prisma-engines/blob/master/.github/workflows/quaint.yml,External Resource Access,"Usage of mysql://root:prisma@localhost:3307/prisma, mysql://root:prisma@localhost:3308/prisma, mysql://root:prisma@localhost:3306/prisma found."
+Shopify,https://github.com/Shopify,schema-engine.yml,https://github.com/Shopify/prisma-engines/blob/master/.github/workflows/schema-engine.yml,External Resource Access,"Usage of mysql://root:prisma@localhost:33807/test, mysql://root:prisma@localhost:33578/shadow, mysql://root:prisma@localhost:33808/shadow, mysql://root:prisma@localhost:33577/test, postgresql://prisma@localhost:26257""
+          - name: sqlite
+            url: sqlite
+          - name: vitess_5_7
+            url: ""mysql://root:prisma@localhost:33577/test found."
+grafana,https://github.com/grafana,e2e.yaml,https://github.com/grafana/grafana-operator/blob/master/.github/workflows/e2e.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+grafana,https://github.com/grafana,e2e-tests.yml,https://github.com/grafana/opentelemetry-collector-contrib/blob/master/.github/workflows/e2e-tests.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+aws-samples,https://github.com/aws-samples,code_mirror.yml,https://github.com/aws-samples/aws-cloudformation-stack-instances/blob/master/.github/workflows/code_mirror.yml,External Resource Access,"Usage of ssh://${{ secrets.CODECOMMIT_SSH_KEY_ID}}@${{ secrets.CODECOMMIT_ENDPOINT }}/v1/repos/${{ secrets.CODECOMMIT_REPOSITORY }} HEAD:${{ secrets.CODECOMMIT_BRANCH}}'
+      - run: 'git push -f ssh://${{ secrets.CODECOMMIT_SSH_KEY_ID}}@${{ secrets.CODECOMMIT_ENDPOINT }}/v1/repos/${{ secrets.CODECOMMIT_REPOSITORY }} HEAD:${{ secrets.CODECOMMIT_BRANCH} found."
+aws-samples,https://github.com/aws-samples,code_mirror.yml,https://github.com/aws-samples/aws-organizations-account-resource/blob/master/.github/workflows/code_mirror.yml,External Resource Access,"Usage of ssh://${{ secrets.CODECOMMIT_SSH_KEY_ID}}@${{ secrets.CODECOMMIT_ENDPOINT }}/v1/repos/${{ secrets.CODECOMMIT_REPOSITORY }} HEAD:${{ secrets.CODECOMMIT_BRANCH}}'
+      - run: 'git push -f ssh://${{ secrets.CODECOMMIT_SSH_KEY_ID}}@${{ secrets.CODECOMMIT_ENDPOINT }}/v1/repos/${{ secrets.CODECOMMIT_REPOSITORY }} HEAD:${{ secrets.CODECOMMIT_BRANCH} found."
+aws-samples,https://github.com/aws-samples,code_mirror.yml,https://github.com/aws-samples/aws-concurrent-provisioned-product/blob/master/.github/workflows/code_mirror.yml,External Resource Access,"Usage of ssh://${{ secrets.CODECOMMIT_SSH_KEY_ID}}@${{ secrets.CODECOMMIT_ENDPOINT }}/v1/repos/${{ secrets.CODECOMMIT_REPOSITORY }} HEAD:${{ secrets.CODECOMMIT_BRANCH}}'
+      - run: 'git push -f ssh://${{ secrets.CODECOMMIT_SSH_KEY_ID}}@${{ secrets.CODECOMMIT_ENDPOINT }}/v1/repos/${{ secrets.CODECOMMIT_REPOSITORY }} HEAD:${{ secrets.CODECOMMIT_BRANCH} found."
+aws-samples,https://github.com/aws-samples,code_mirror.yml,https://github.com/aws-samples/aws-cloudformation-stack/blob/master/.github/workflows/code_mirror.yml,External Resource Access,"Usage of ssh://${{ secrets.CODECOMMIT_SSH_KEY_ID}}@${{ secrets.CODECOMMIT_ENDPOINT }}/v1/repos/${{ secrets.CODECOMMIT_REPOSITORY }} HEAD:${{ secrets.CODECOMMIT_BRANCH}}'
+      - run: 'git push -f ssh://${{ secrets.CODECOMMIT_SSH_KEY_ID}}@${{ secrets.CODECOMMIT_ENDPOINT }}/v1/repos/${{ secrets.CODECOMMIT_REPOSITORY }} HEAD:${{ secrets.CODECOMMIT_BRANCH} found."
+PacktPublishing,https://github.com/PacktPublishing,ci.yml,https://github.com/PacktPublishing/A-Blueprint-for-Production-Ready-Web-Applications/blob/master/.github/workflows/ci.yml,External Resource Access,Usage of postgresql://tozo:tozo@postgres:5432/tozo_test found.
+Azure,https://github.com/Azure,large-cluster-test.yaml,https://github.com/Azure/aks-engine/blob/master/.github/workflows/large-cluster-test.yaml,Kubernetes Resource Access,"Usage of $KUBECONFIG, KUBECONFIG:  found."
+Azure,https://github.com/Azure,integration-tests.yml,https://github.com/Azure/k8s-create-secret/blob/master/.github/workflows/integration-tests.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+Azure,https://github.com/Azure,integration-tests.yml,https://github.com/Azure/k8s-set-context/blob/master/.github/workflows/integration-tests.yml,Kubernetes Resource Access,Usage of $KUBECONFIG found.
+Azure,https://github.com/Azure,integration-tests.yml,https://github.com/Azure/setup-kubectl/blob/master/.github/workflows/integration-tests.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+Azure,https://github.com/Azure,run-integration-tests-basic.yml,https://github.com/Azure/k8s-deploy/blob/master/.github/workflows/run-integration-tests-basic.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+Azure,https://github.com/Azure,run-integration-tests-bluegreen-ingress.yml,https://github.com/Azure/k8s-deploy/blob/master/.github/workflows/run-integration-tests-bluegreen-ingress.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+Azure,https://github.com/Azure,run-integration-tests-bluegreen-service.yml,https://github.com/Azure/k8s-deploy/blob/master/.github/workflows/run-integration-tests-bluegreen-service.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+Azure,https://github.com/Azure,run-integration-tests-bluegreen-smi.yml,https://github.com/Azure/k8s-deploy/blob/master/.github/workflows/run-integration-tests-bluegreen-smi.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+Azure,https://github.com/Azure,run-integration-tests-canary-pod.yml,https://github.com/Azure/k8s-deploy/blob/master/.github/workflows/run-integration-tests-canary-pod.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+Azure,https://github.com/Azure,run-integration-tests-canary-smi.yml,https://github.com/Azure/k8s-deploy/blob/master/.github/workflows/run-integration-tests-canary-smi.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+Azure,https://github.com/Azure,run-integration-tests-private.yml,https://github.com/Azure/k8s-deploy/blob/master/.github/workflows/run-integration-tests-private.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+Azure,https://github.com/Azure,run-integration-tests-resource-annotation.yml,https://github.com/Azure/k8s-deploy/blob/master/.github/workflows/run-integration-tests-resource-annotation.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+Azure,https://github.com/Azure,integration-tests.yml,https://github.com/Azure/k8s-lint/blob/master/.github/workflows/integration-tests.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+Azure,https://github.com/Azure,2-deploy-workload.yml,https://github.com/Azure/AKS-Landing-Zone-Accelerator/blob/master/.github/workflows/2-deploy-workload.yml,External Resource Access,Usage of mongodb://${{ env.MONGO_DB_USER }}:${{ env.MongoDB_Password }}@ratings-mongodb.ratingsapp:27017/ratingsdb found.
+Azure,https://github.com/Azure,ci.yml,https://github.com/Azure/fleet/blob/master/.github/workflows/ci.yml,Kubernetes Resource Access,Usage of KUBECONFIG: '/home/runner/.kube/config' found.
+Azure,https://github.com/Azure,ci.yml,https://github.com/Azure/k8s-work-api/blob/master/.github/workflows/ci.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+Azure,https://github.com/Azure,run-integration-tests.yml,https://github.com/Azure/k8s-artifact-substitute/blob/master/.github/workflows/run-integration-tests.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+Azure,https://github.com/Azure,large-cluster-test.yaml,https://github.com/Azure/aks-engine-azurestack/blob/master/.github/workflows/large-cluster-test.yaml,Kubernetes Resource Access,"Usage of $KUBECONFIG, KUBECONFIG:  found."
+Azure,https://github.com/Azure,azure-deploy.yml,https://github.com/Azure/Apps-DB-Mongo-AI/blob/master/.github/workflows/azure-deploy.yml,External Resource Access,"Usage of mongodb+srv://
+      MONGO_CONNECTION_STRING_CONN:  mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        # with:
+        #   ref: ${{ github.event.inputs.appGetRepositoryBranch }}
+
+      - name: Set up Azure CLI
+        uses: azure/login found."
+NVIDIA,https://github.com/NVIDIA,e2e.yaml,https://github.com/NVIDIA/k8s-device-plugin/blob/master/.github/workflows/e2e.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+NVIDIA,https://github.com/NVIDIA,run-kata-coco-tests.yaml,https://github.com/NVIDIA/kata-containers/blob/master/.github/workflows/run-kata-coco-tests.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+hashicorp,https://github.com/hashicorp,acceptance_tests_kind.yaml,https://github.com/hashicorp/terraform-provider-kubernetes/blob/master/.github/workflows/acceptance_tests_kind.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+hashicorp,https://github.com/hashicorp,check_examples.yaml,https://github.com/hashicorp/terraform-provider-kubernetes/blob/master/.github/workflows/check_examples.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+hashicorp,https://github.com/hashicorp,manifest_acc.yaml,https://github.com/hashicorp/terraform-provider-kubernetes/blob/master/.github/workflows/manifest_acc.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+hashicorp,https://github.com/hashicorp,build.yml,https://github.com/hashicorp/terraform-provider-vault/blob/master/.github/workflows/build.yml,External Resource Access,Usage of mongodb://root:mongodb@mongo:27017/admin found.
+hashicorp,https://github.com/hashicorp,tests.yaml,https://github.com/hashicorp/terraform-provider-helm/blob/master/.github/workflows/tests.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+hashicorp,https://github.com/hashicorp,helm-end-to-end-tfc.yaml,https://github.com/hashicorp/terraform-cloud-operator/blob/master/.github/workflows/helm-end-to-end-tfc.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+hashicorp,https://github.com/hashicorp,helm-end-to-end-tfe.yaml,https://github.com/hashicorp/terraform-cloud-operator/blob/master/.github/workflows/helm-end-to-end-tfe.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+rust-lang,https://github.com/rust-lang,ci.yml,https://github.com/rust-lang/rustc-perf/blob/master/.github/workflows/ci.yml,External Resource Access,"Usage of postgresql://postgres:postgres@127.0.0.1:5432/postgres, postgresql://postgres:postgres@localhost:5432/postgres found."
+apache,https://github.com/apache,eventbase-ci.yml,https://github.com/apache/servicecomb-service-center/blob/master/.github/workflows/eventbase-ci.yml,External Resource Access,"Usage of mongodb://127.0.0.1:27017
+          cd eventbase
+          go test -short -covermode=atomic $(go list ./... | grep -v etcd | grep -v third_party | grep -v examples)
+  etcd-storage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Go
+        uses: actions/setup-go@v1
+        with:
+          go-version: 1.18
+        id: go
+      - name: Check out source code
+        uses: actions/checkout found."
+apache,https://github.com/apache,backend.yml,https://github.com/apache/seatunnel/blob/master/.github/workflows/backend.yml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.
+apache,https://github.com/apache,backend.yml,https://github.com/apache/dolphinscheduler/blob/master/.github/workflows/backend.yml,External Resource Access,"Usage of mysql://127.0.0.1:3306/dolphinscheduler_dev?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false""
+            export SPRING_DATASOURCE_USERNAME=""root""
+            export SPRING_DATASOURCE_PASSWORD=""mysql""
+            bash dolphinscheduler/dev/tools/bin/upgrade-schema.sh
+
+            export SPRING_DATASOURCE_URL=""jdbc:mysql://127.0.0.1:3306/dolphinscheduler_${{ env.DATABASE_VERSION }}?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false""
+            if [[ $DATABASE_VERSION -lt 300 ]]; then
+              bash dolphinscheduler/${{ matrix.version }}/script/create-dolphinscheduler.sh
+            else
+              bash dolphinscheduler/${{ matrix.version }}/tools/bin/upgrade-schema.sh
+            fi
+            bash dolphinscheduler/dev/tools/bin/upgrade-schema.sh
+
+            atlas_result=$(atlas schema diff \
+              --from ""mysql://root:mysql@127.0.0.1:3306/dolphinscheduler_, mysql://root:mysql@127.0.0.1:3306/dolphinscheduler_dev, postgresql://127.0.0.1:5432/dolphinscheduler_dev""
+            export SPRING_DATASOURCE_USERNAME=""postgres""
+            export SPRING_DATASOURCE_PASSWORD=""postgres""
+            bash dolphinscheduler/dev/tools/bin/upgrade-schema.sh
+          
+            export SPRING_DATASOURCE_URL=""jdbc:postgresql://127.0.0.1:5432/dolphinscheduler_${{ env.DATABASE_VERSION }}""
+            if [[ $DATABASE_VERSION -lt 300 ]]; then
+              bash dolphinscheduler/${{ matrix.version }}/script/create-dolphinscheduler.sh
+            else
+              bash dolphinscheduler/${{ matrix.version }}/tools/bin/upgrade-schema.sh
+            fi
+            bash dolphinscheduler/dev/tools/bin/upgrade-schema.sh
+          
+            atlas_result=$(atlas schema diff \
+              --from ""postgres://postgres:postgres@127.0.0.1:5432/dolphinscheduler_ found."
+apache,https://github.com/apache,mongo_storage.yml,https://github.com/apache/servicecomb-kie/blob/master/.github/workflows/mongo_storage.yml,External Resource Access,Usage of mongodb://kie:123@127.0.0.1:27017/servicecomb found.
+apache,https://github.com/apache,pulsar-helm-chart-ci.yaml,https://github.com/apache/pulsar-helm-chart/blob/master/.github/workflows/pulsar-helm-chart-ci.yaml,Kubernetes Resource Access,Usage of $KUBECONFIG found.
+apache,https://github.com/apache,test-e2e.yml,https://github.com/apache/incubator-devlake/blob/master/.github/workflows/test-e2e.yml,External Resource Access,Usage of mysql://root:root@db:3306/lake found.
+google,https://github.com/google,test_coverage.yml,https://github.com/google/GoogleUtilities/blob/master/.github/workflows/test_coverage.yml,Cloud Resource Access,Usage of gcloud auth activate-service-account --key-file metrics-access.json found.
+google,https://github.com/google,test_coverage.yml,https://github.com/google/GoogleDataTransport/blob/master/.github/workflows/test_coverage.yml,Cloud Resource Access,Usage of gcloud auth activate-service-account --key-file metrics-access.json found.
+microsoft,https://github.com/microsoft,cd.yml,https://github.com/microsoft/kubemlops/blob/master/.github/workflows/cd.yml,Kubernetes Resource Access,Usage of ${{ secrets.KUBECONFIG }} found.
+microsoft,https://github.com/microsoft,deploy-aks.yml,https://github.com/microsoft/github-private-runners-on-aks/blob/master/.github/workflows/deploy-aks.yml,Kubernetes Resource Access,"Usage of kubectl --kubeconfig $KUBECONFIG, $KUBECONFIG found."
+microsoft,https://github.com/microsoft,run-kata-coco-tests.yaml,https://github.com/microsoft/kata-containers/blob/master/.github/workflows/run-kata-coco-tests.yaml,Kubernetes Resource Access,Usage of KUBECONFIG:  found.

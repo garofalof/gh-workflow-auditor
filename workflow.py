@@ -46,6 +46,7 @@ class WorkflowVulnAudit():
         self.malicious_commits = {}
         self.cloud_commands = {}
         self.kubernetes_patterns = {}
+        self.external_resource_patterns = {}
 
         with open('scan_config.json','r') as scan_file:
             scan_config = json.loads(scan_file.read())
@@ -61,6 +62,8 @@ class WorkflowVulnAudit():
                 self.cloud_commands[cloud_provider][command_name] = re.compile(command_pattern)
         for pattern_name, pattern in scan_config['kubernetes_patterns'].items():
             self.kubernetes_patterns[pattern_name] = re.compile(pattern)
+        for pattern_name, pattern in scan_config['external_resource_patterns'].items():
+            self.external_resource_patterns[pattern_name] = re.compile(pattern)
 
         self.vulnerable = {'vulnerable':True}
 
@@ -107,6 +110,15 @@ class WorkflowVulnAudit():
     def detect_kubernetes_patterns(self, full_yaml) -> list:
         found_matches = {}
         for pattern_name, pattern in self.kubernetes_patterns.items():
+            if matches := pattern.finditer(full_yaml):
+                matched_patterns = [match.group() for match in matches]
+                if matched_patterns:
+                    found_matches[pattern_name] = matched_patterns
+        return found_matches
+
+    def detect_external_resource_patterns(self, full_yaml) -> list:
+        found_matches = {}
+        for pattern_name, pattern in self.external_resource_patterns.items():
             if matches := pattern.finditer(full_yaml):
                 matched_patterns = [match.group() for match in matches]
                 if matched_patterns:
